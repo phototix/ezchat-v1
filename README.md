@@ -2,6 +2,8 @@
 
 Welcome to the WhatsApp Customer Service Chat Application! This project provides a chat service for customer support using the WhatsApp API.
 
+Check Git Repo
+
 ## Table of Contents
 
 - [Introduction](#introduction)
