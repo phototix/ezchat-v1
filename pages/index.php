@@ -6,6 +6,7 @@ Version: 2.1
 */
 
 // Template Default set include
+echo $page;
 if($page<>""&&$page<>'index'){
 	$pageFileSystem=WEBBY_ROOT."/pages/".$page.'/index.php';
 	if(file_exists($pageFileSystem)){
