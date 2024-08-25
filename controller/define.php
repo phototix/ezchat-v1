@@ -47,29 +47,31 @@ $Time=date("g:i A");
 
 $Token=md5($Today."webbycms".uniqid().$Time);
 
+$result = [];
+
 // Parse URL query to - Level 2 URL
 if($page<>""&&$cate<>""&&$action<>""&&$id<>""){
 	$str= str_replace("/".$page."/".$cate."/".$action."/".$id."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/".$action."/".$id."/?", "", $str));
+	parse_str(str_replace("/".$page."/".$cate."/".$action."/".$id."/?", "", $str), $result);
 }
 if($page<>""&&$cate<>""&&$action<>""&&$id==""){
 	$str= str_replace("/".$page."/".$cate."/".$action."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/".$action."/?", "", $str));
+	parse_str(str_replace("/".$page."/".$cate."/".$action."/?", "", $str), $result);
 }
 if($page<>""&&$cate<>""&&$action==""&&$id==""){
 	$str= str_replace("/".$page."/".$cate."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/?", "", $str));
+	parse_str(str_replace("/".$page."/".$cate."/?", "", $str), $result);
 }
 if($page<>""&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/".$page."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/?", "", $str));
+	parse_str(str_replace("/".$page."/?", "", $str), $result);
 }
 if($page==""&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/?", "", $_SERVER["REQUEST_URI"]);
-	parse_str($str);
+	parse_str($str, $result);
 }
 if($page=="main"&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/?", "", $_SERVER["REQUEST_URI"]);
-	parse_str($str);
+	parse_str($str, $result);
 }
 ?>
