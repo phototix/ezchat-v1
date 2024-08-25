@@ -3,13 +3,13 @@
         "id": 1,
         "name": "Brandon Chong",
         "status": "online",
-        "profile": "assets/images/users/avatar-1.jpg"
+        "profile": "/assets/images/users/avatar-1.jpg"
     },
     {
         "id": 2,
         "name": "Jac Lee",
         "status": "online",
-        "profile": "assets/images/users/avatar-2.jpg"
+        "profile": "/assets/images/users/avatar-2.jpg"
     } 
   ]
   

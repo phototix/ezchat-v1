@@ -5,13 +5,13 @@
         "id": 1,
         "name": "Brandon Chong",
         "status": "online",
-        "profile": "assets/images/users/avatar-3.jpg"
+        "profile": "/assets/images/users/avatar-3.jpg"
       },
       {
         "id": 2,
         "name": "Jac Lee",
         "status": "online",
-        "profile": "assets/images/users/avatar-1.jpg"
+        "profile": "/assets/images/users/avatar-1.jpg"
       }
     ],
     "favorites": [
@@ -19,7 +19,7 @@
         "id": 1,
         "name": "Brandon Chong",
         "status": "online",
-        "profile": "assets/images/users/avatar-3.jpg",
+        "profile": "/assets/images/users/avatar-3.jpg",
         "messagecount" : 1
       }
     ]

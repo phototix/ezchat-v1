@@ -113,7 +113,7 @@ function themeColor(e) {
 !(function () {
     var d = !1,
         u = "users-chat",
-        n = "assets/images/users/user-dummy-img.jpg",
+        n = "/assets/images/users/user-dummy-img.jpg",
         m = "users",
         s = window.location.origin + "/assets/js/dir/",
         f = "",
@@ -761,7 +761,7 @@ function themeColor(e) {
             I.classList.toggle("active");
         };
     }
-    new FgEmojiPicker({ trigger: [".emoji-btn"], removeOnSelection: !1, closeButton: !0, position: ["top", "right"], preFetch: !0, dir: "assets/js/dir/json", insertInto: document.querySelector(".chat-input") });
+    new FgEmojiPicker({ trigger: [".emoji-btn"], removeOnSelection: !1, closeButton: !0, position: ["top", "right"], preFetch: !0, dir: "/assets/js/dir/json", insertInto: document.querySelector(".chat-input") });
     function H(e, t, a, s, i) {
         var l = '<div class="ctext-wrap">';
         if (null != t) l += '<div class="ctext-wrap-content" id=' + e + '>        <p class="mb-0 ctext-content">' + t + "</p></div>";

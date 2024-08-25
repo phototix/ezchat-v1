@@ -40,7 +40,7 @@
         "to_id": 1,
         "msg": null,   
         "has_dropDown": false,    
-        "has_images": ["assets/images/small/img-1.jpg"],
+        "has_images": ["/assets/images/small/img-1.jpg"],
         "has_files": [],
         "datetime":   "10:15 am",
         "isReplied": 1

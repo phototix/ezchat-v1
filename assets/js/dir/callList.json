@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Patrick Hendricks",
         "dateTime": "13 Aug, 2021, 01:05PM",
-        "profile": "assets/images/users/avatar-11.jpg",
+        "profile": "/assets/images/users/avatar-11.jpg",
         "callTime":"02:34",
         "callVideo" : true, 
         "callTypeIcon":"bx bx-video align-middle",
