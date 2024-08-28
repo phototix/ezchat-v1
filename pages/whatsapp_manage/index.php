@@ -50,9 +50,30 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
     <!-- end left sidebar-menu -->
 
     <!-- Start User chat -->
-    <div class="user-chat w-100 overflow-hidden">
+    <div class="user-chat w-100 overflow-hidden user-chat-show">
 
         <div class="chat-content d-lg-flex">
+
+            <!-- Start Content Body Top Header -->
+            <div class="p-3 p-lg-4 user-chat-topbar">
+                <div class="row align-items-center">
+                    <div class="col-sm-4 col-8">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0 d-block d-lg-none me-3">
+                                <a href="/dashboard" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex align-items-center">   
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <h6 class="text-truncate mb-0 font-size-18"><a href="#" class="user-profile-show text-reset">Manage WhatsApp</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Body Top Header -->
 
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">
@@ -69,7 +90,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                             <?php
                             $screenShot = fetchWhatsappScreenshot($ApiUrl, $apiKey);
                             ?>
-                            <img src="data:image/png;base64,<?= base64_encode($screenShot) ?>" alt="QR Code">
+                            <img src="data:image/png;base64,<?= base64_encode($screenShot) ?>" alt="QR Code" style="width: 100%;">
                             <br><br>
                             <a href="/whatsapp_logout">
                                 <div class="btn btn-danger">Logout WhatsApp Server</div>

@@ -41,10 +41,96 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <!-- end left sidebar-menu -->
 
+    <!-- start chat-leftsidebar -->
+    <div class="chat-leftsidebar">
+
+        <div class="tab-content">
+
+            <!-- Start chats tab-pane -->
+            <div class="tab-pane show active" id="pills-chat" role="tabpanel" aria-labelledby="pills-chat-tab">
+                <!-- Start chats content -->
+                <div>
+                    <div class="px-4 pt-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h4 class="mb-4">Dashboard</h4>
+                            </div>
+                        </div>
+
+                    </div> <!-- .p-4 -->
+
+                    <div class="chat-room-list" data-simplebar>
+                        <!-- Start chat-message-list -->
+                        <h5 class="mb-3 px-4 mt-4 font-size-11 text-muted text-uppercase">Actions</h5>
+
+                        <div class="chat-message-list">
+    
+                            <ul class="list-unstyled chat-list chat-user-list" id="dashboard-list">
+                                <li id="showChatButton" class="">
+                                    <a href="javascript: void(0);" class="unread-msg-user">、
+                                        <div class="d-flex align-items-center">
+                                            <div class="chat-user-img online align-self-center me-2 ms-0">
+                                                <img src="/assets/dashboard.png" class="rounded-circle avatar-xs" alt="">
+                                                <span class="user-status"></span>
+                                            </div>
+                                            <div class="overflow-hidden">
+                                                <p class="text-truncate mb-0">Dashboard</p>
+                                            </div>
+
+                                            <?php if ($showBadgeNumbersInMenu): ?>
+                                                <div class="ms-auto">
+                                                    <span class="badge bg-dark-subtle text-reset rounded p-1">18</span>
+                                                </div>
+                                            <?php endif; ?>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <!-- Start chats content -->
+                
+            </div>
+            <!-- End chats tab-pane -->
+
+        </div>
+        <!-- end tab content -->
+    </div>
+    <!-- end chat-leftsidebar -->
+
     <!-- Start User chat -->
     <div class="user-chat w-100 overflow-hidden">
 
         <div class="chat-content d-lg-flex">
+
+            <!-- Start Content Body Top Header -->
+            <div class="p-3 p-lg-4 user-chat-topbar">
+                <div class="row align-items-center">
+                    <div class="col-sm-4 col-8">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0 d-block d-lg-none me-3">
+                                <a href="javascript: void(0);" id="closeChatBody" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex align-items-center">                            
+                                    <div class="flex-shrink-0 chat-user-img online user-own-img align-self-center me-3 ms-0">
+                                        <img src="/assets/logo.png" class="rounded-circle avatar-sm" alt="">
+                                    </div>
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <h6 class="text-truncate mb-0 font-size-18"><a href="#" class="user-profile-show text-reset"><?=ucwords($user["username"])?></a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Body Top Header -->
 
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">

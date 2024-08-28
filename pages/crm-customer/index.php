@@ -97,13 +97,24 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                     </div> <!-- .p-4 -->
 
                     <div class="chat-room-list" data-simplebar>
-                        <!-- Start chat-message-list -->
-                        <h5 class="mb-3 px-4 mt-4 font-size-11 text-muted text-uppercase">Actions</h5>
-
+                        
                         <div class="chat-message-list">
     
-                            <ul class="list-unstyled chat-list chat-user-list" id="favourite-users">
+                            <ul class="list-unstyled chat-list chat-user-list" id="customer-list">
+                                <li id="showChatButton" class="">
+                                    <a href="javascript: void(0);" class="unread-msg-user">、
+                                        <div class="d-flex align-items-center">
+                                            <div class="chat-user-img online align-self-center me-2 ms-0">
+                                                <img src="/assets/bullet.png" class="rounded-circle avatar-xs" alt="">
+                                            </div>
+                                            <div class="overflow-hidden">
+                                                <p class="text-truncate mb-0">Customers List</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
                             </ul>
+
                         </div>
 
                         <div class="d-flex align-items-center px-4 mt-5 mb-2">
@@ -113,13 +124,6 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                             <div class="flex-shrink-0">
                                 
                             </div>
-                        </div>
-
-                        <div class="chat-message-list">
-    
-                            <ul class="list-unstyled chat-list chat-user-list" id="usersList">
-        
-                            </ul>
                         </div>
                         
                     </div>
@@ -141,11 +145,35 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 
         <div class="chat-content d-lg-flex">
 
+            <!-- Start Content Body Top Header -->
+            <div class="p-3 p-lg-4 user-chat-topbar">
+                <div class="row align-items-center">
+                    <div class="col-sm-4 col-8">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0 d-block d-lg-none me-3">
+                                <a href="javascript: void(0);" id="closeChatBody" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex align-items-center">                            
+                                    <div class="flex-shrink-0 chat-user-img online user-own-img align-self-center me-3 ms-0">
+                                        <img src="/assets/logo.png" class="rounded-circle avatar-sm" alt="">
+                                        <span class="user-status"></span>
+                                    </div>
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <h6 class="text-truncate mb-0 font-size-18"><a href="#" class="user-profile-show text-reset">Customer List</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Body Top Header -->
+
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">
                 
-                <div class="container mt-4">
-                    <h1 class="mb-4">Customer List</h1>
+                <div class="container" style="margin-top: 6rem;">
                     
                     <!-- Customer Table -->
                     <table class="table table-striped">

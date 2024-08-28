@@ -47,6 +47,9 @@ $Time=date("H:i:s");
 
 $Token=md5($Today."webbycms".uniqid().$Time);
 
+// Configure some portal settings.
+$showBadgeNumbersInMenu = "";
+
 $Queryresult = [];
 
 // Parse URL query to - Level 2 URL
