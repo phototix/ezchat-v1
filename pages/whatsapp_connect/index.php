@@ -4,9 +4,48 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$stmt = $pdo->prepare("SELECT username, whatsapp_connected FROM users WHERE id = :id");
+$stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id");
 $stmt->execute([':id' => $_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$userId = $user['username'];
+$apiKey = '8cd0de4e14cd240a97209625af4bdeb0'; // Replace with your actual API key
+$qrApiUrl = "https://server01.ezy.chat/api/screenshot?session=".$userId;
+$statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
+
+// Function to fetch QR code image
+function fetchQrCode($url, $apiKey) {
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'accept: image/png',
+        'X-Api-Key: ' . $apiKey
+    ]);
+    $imageData = curl_exec($ch);
+    curl_close($ch);
+    return $imageData;
+}
+
+// Check WhatsApp connection status
+$status = checkWhatsappStatus($statusApiUrl, $apiKey);
+
+if ($status === 'WORKING') {
+        // Redirect to dashboard if already connected
+        $stmt = $pdo->prepare("UPDATE users SET whatsapp_connected = 1 WHERE id = :id");
+        $stmt->execute([':id' => $_SESSION['user_id']]);
+        header("Location: /dashboard");
+        exit();
+} elseif ($status === 'SCAN_QR_CODE') {
+        // Display the QR code for the user to scan
+        $qrCode = fetchQrCode($qrApiUrl, $apiKey);
+} elseif ($status === 'FAILED') {
+        header("Location: /whatsapp_restart");
+} elseif ($status === 'STOPPED') {
+        header("Location: /whatsapp_restart");
+} else {
+        // Handle other statuses if needed
+        header("Location: /dashboard");
+}
 ?>
 <?php include("includes/htmlstart.php"); ?>
 <div class="layout-wrapper d-lg-flex">
@@ -52,7 +91,19 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="qr-code-container">
                         <br><br><br><br>
                         <center>
-                        <h2>Welcome to EzChat!</h2>
+                        <h2>Scan this QR Code to Connect WhatsApp</h2>
+                        <?php if ($qrCode): ?>
+                                <img src="data:image/png;base64,<?= base64_encode($qrCode) ?>" alt="QR Code">
+                                <script>
+                                    setTimeout(function() {
+                                        window.location.href = "/whatsapp_manage";
+                                    }, 10000);
+                                </script>
+                        <?php else: ?>
+                            <p>Unable to fetch QR code. Please try again later.</p>
+                        <?php endif; ?>
+                        <br><br>
+                        <a href="/whatsapp_restart" style="color:red;">Restart Instance</a>
                         </center>
                 </div>
                 
