@@ -1,8 +1,3 @@
-<?php
-// Destroy the session and redirect to login page
-session_unset();
-session_destroy();
-?>
 <?php include("includes/htmlstart.php"); ?>
 <div class="auth-bg">
     <div class="container-fluid p-0">
@@ -25,19 +20,39 @@ session_destroy();
                         <div class="row justify-content-center my-auto">
                             <div class="col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                                 
-                                <div class="py-md-5 py-4 text-center">
+                                <div class="py-md-5 py-4">
                                     
-                                    <div class="avatar-xl mx-auto">
-                                        <div class="avatar-title bg-primary-subtle text-primary h1 rounded-circle">
-                                            <i class="bx bxs-user"></i>
-                                        </div>
+                                    <div class="text-center mb-5">
+                                        <h3>Welcome Back to EzChat!</h3>
+                                        <p class="text-muted">EzChat Password Recovery (Verify OTP - One Time Passcode)</p>
                                     </div>
-                                    <div class="mt-4 pt-2">
-                                        <h5>You are Logged Out</h5>
-                                        <div class="mt-4">
-                                            <a href="/" class="btn btn-primary w-100 waves-effect waves-light">Sign In</a>
+
+                                    <?php if(!empty($status)){ ?>
+                                        <?php include(WEBBY_ROOT.'/controller/error_handler.php'); ?>
+                                    <?php } ?>
+
+                                    <form action="" method="post">
+                                        <input type="hidden" name="form" value="<?=$Token?>">
+                                        <input type="hidden" name="action" value="user_verify_otp">
+                                        <input type="hidden" name="page" value="<?=$page?>">
+                                        <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
+                                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>">
+
+                                        <div class="mb-3">
+                                            <label for="otp" class="form-label">OTP</label>
+                                            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP (One Time Passcode)" required="required">
                                         </div>
+
+                                        <div class="text-center mt-4">
+                                            <button class="btn btn-primary w-100" type="submit">Reset Password</button>
+                                        </div>
+
+                                    </form><!-- end form -->
+    
+                                    <div class="mt-5 text-center text-muted">
+                                        <p>Don't have an account ? <a href="auth-register.html" class="fw-medium text-decoration-underline"> Register</a></p>
                                     </div>
+
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->

@@ -9,49 +9,27 @@ General Configurations of your web applications
 */
 define ('WEBBY_ROOT', dirname(dirname(__FILE__)));
 
-/* Live Database Connection */
-$conn_mysql_host="";
-$conn_mysql_username="";
-$conn_mysql_password="";
-$conn_mysql_database="";
-
-/* Development Database Connection */
-$conn_mysql_host_dev="localhost";
-$conn_mysql_username_dev="root";
-$conn_mysql_password_dev="";
-$conn_mysql_database_dev="";
-
 /* Here you can put your Localhost/Development Enviroment endpoint, so can be isolated from live database. */
 $localhost_dev="";
 
+/* Set your application timezone. */
+date_default_timezone_set('Asia/Singapore');
 /* Include PHP Variables and defines. */
 require("define.php");
 
-/* 
-Define to use localhost development database and is the web application use any database 
-Put 'yes' to enable, 'no' to disable.
-*/
-$useLocalMySql="yes";$useDataTable="no";
+$host = 'localhost';
+$db = 'db_ezchat';
+$user = 'root';
+$pass = '#Abccy1982#';
 
-if($useDataTable=="yes"){
-	if($useLocalMySql=="yes"){
-		if($_SERVER["HTTP_HOST"]==$localhost_dev){
-			$conn_mysql_host=$conn_mysql_host_dev;
-			$conn_mysql_username=$conn_mysql_username_dev;
-			$conn_mysql_password=$conn_mysql_password_dev;
-			$conn_mysql_database=$conn_mysql_database_dev;
-		}
-	}
-	if($conn_mysql_username==""||$conn_mysql_password==""||$conn_mysql_database==""){
-		die('Database Config Error!');
-	}else{
-		$con = mysqli_connect($conn_mysql_host, $conn_mysql_username , $conn_mysql_password, $conn_mysql_database);
-		if (!$con){
-			die('Could not connect: ' . mysql_error());
-		}
-	}
+try {
+    // Create a new PDO instance and set error mode to exceptions
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Optional: set fetch mode to FETCH_ASSOC for associative arrays
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Catch any errors and display a message
+    die("Connection failed: " . $e->getMessage());
 }
-
-/* Set your application timezone. */
-date_default_timezone_set('Asia/Singapore');
 ?>

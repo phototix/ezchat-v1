@@ -47,31 +47,47 @@ $Time=date("g:i A");
 
 $Token=md5($Today."webbycms".uniqid().$Time);
 
-$result = [];
+$Queryresult = [];
 
 // Parse URL query to - Level 2 URL
 if($page<>""&&$cate<>""&&$action<>""&&$id<>""){
 	$str= str_replace("/".$page."/".$cate."/".$action."/".$id."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/".$action."/".$id."/?", "", $str), $result);
+	parse_str(str_replace("/".$page."/".$cate."/".$action."/".$id."/?", "", $str), $Queryresult);
 }
 if($page<>""&&$cate<>""&&$action<>""&&$id==""){
 	$str= str_replace("/".$page."/".$cate."/".$action."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/".$action."/?", "", $str), $result);
+	parse_str(str_replace("/".$page."/".$cate."/".$action."/?", "", $str), $Queryresult);
 }
 if($page<>""&&$cate<>""&&$action==""&&$id==""){
 	$str= str_replace("/".$page."/".$cate."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/".$cate."/?", "", $str), $result);
+	parse_str(str_replace("/".$page."/".$cate."/?", "", $str), $Queryresult);
 }
 if($page<>""&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/".$page."?", "", $_SERVER["REQUEST_URI"]);
-	parse_str(str_replace("/".$page."/?", "", $str), $result);
+	parse_str(str_replace("/".$page."/?", "", $str), $Queryresult);
 }
 if($page==""&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/?", "", $_SERVER["REQUEST_URI"]);
-	parse_str($str, $result);
+	parse_str($str, $Queryresult);
 }
 if($page=="main"&&$cate==""&&$action==""&&$id==""){
 	$str= str_replace("/?", "", $_SERVER["REQUEST_URI"]);
-	parse_str($str, $result);
+	parse_str($str, $Queryresult);
+}
+
+// Country list (example; add more as needed)
+$countries = [
+    'Malaysia (MY)' => '60',
+    'Singapore (SG)' => '65',
+    'United States (US)' => '1',
+    'United Kingdom (GB)' => '44',
+    'Canada (CA)' => '1',
+    'Australia (AU)' => '61',
+    // Add more countries as needed
+];
+
+// Create variables from the associative array
+foreach ($Queryresult as $Querykey => $Queryvalue) {
+    $$Querykey = $Queryvalue;
 }
 ?>

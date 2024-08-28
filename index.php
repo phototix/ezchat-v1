@@ -11,6 +11,8 @@ Global settings
 */
 ?>
 <?php require_once('controller/conn.php'); ?>
+<?php require_once('controller/functions.php'); ?>
+<?php require_once('controller/form_handler.php'); ?>
 <?php
 /*
 Below is all front related.

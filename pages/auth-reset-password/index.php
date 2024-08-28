@@ -23,50 +23,45 @@
                                 <div class="py-md-5 py-4">
                                     
                                     <div class="text-center mb-5">
-                                        <h3>Welcome Back !</h3>
-                                        <p class="text-muted">Sign in to continue to EzChat</p>
+                                        <h3>Welcome to EzChat!</h3>
+                                        <p class="text-muted">EzChat Password Recovery</p>
                                     </div>
 
                                     <?php if(!empty($status)){ ?>
                                         <?php include(WEBBY_ROOT.'/controller/error_handler.php'); ?>
                                     <?php } ?>
+
                                     <form action="" method="post">
                                         <input type="hidden" name="form" value="<?=$Token?>">
-                                        <input type="hidden" name="action" value="user_login">
+                                        <input type="hidden" name="action" value="user_reset_password">
                                         <input type="hidden" name="page" value="<?=$page?>">
                                         <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
-
+                                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>">
+                                        
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required="required">
+                                            <label for="userpassword" class="form-label">New Password</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" class="form-control pe-5" placeholder="Enter Password" id="userpassword" name="password" required="required">
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                            </div>
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <div class="float-end">
-                                                <a href="auth-recoverpw.html" class="text-muted">Forgot password?</a>
-                                            </div>
-                                            <label for="userpassword" class="form-label">Password</label>
+                                            <label for="confirmpassword" class="form-label">Confirm New Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5" placeholder="Enter Password" id="password-input" name="password" required="required">
+                                                <input type="password" class="form-control pe-5" placeholder="Enter Password" id="confirmpassword" name="confirmpassword" required="required">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
     
-                                        <div class="form-check form-check-info font-size-16">
-                                            <input class="form-check-input" type="checkbox" id="remember-check">
-                                            <label class="form-check-label font-size-14" for="remember-check">
-                                                Remember me
-                                            </label>
-                                        </div>
-    
                                         <div class="text-center mt-4">
-                                            <button class="btn btn-primary w-100" type="submit">Log In</button>
+                                            <button class="btn btn-primary w-100" type="submit">Update Password</button>
                                         </div>
 
                                     </form><!-- end form -->
     
                                     <div class="mt-5 text-center text-muted">
-                                        <p>Don't have an account ? <a href="auth-register.html" class="fw-medium text-decoration-underline"> Register</a></p>
+                                        <p>Have an account ? <a href="auth-login.html" class="fw-medium text-decoration-underline"> Login</a></p>
                                     </div>
                                 </div>
                             </div><!-- end col -->

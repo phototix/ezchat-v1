@@ -30,6 +30,7 @@
                                     <?php if(!empty($status)){ ?>
                                         <?php include(WEBBY_ROOT.'/controller/error_handler.php'); ?>
                                     <?php } ?>
+
                                     <form action="" method="post">
                                         <input type="hidden" name="form" value="<?=$Token?>">
                                         <input type="hidden" name="action" value="user_login">
