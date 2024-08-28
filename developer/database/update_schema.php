@@ -1,6 +1,6 @@
 <?php
 // Include your database connection
-include '../controller/conn.php';
+include '../../controller/conn.php';
 
 // Path to the SQL file containing the desired schema
 $sqlFile = 'tables_backup.sql';
