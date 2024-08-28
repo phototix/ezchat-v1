@@ -33,7 +33,7 @@ if ($status === 'WORKING') {
         // Redirect to dashboard if already connected
         $stmt = $pdo->prepare("UPDATE users SET whatsapp_connected = 1 WHERE id = :id");
         $stmt->execute([':id' => $_SESSION['user_id']]);
-        header("Location: /dashboard");
+        header("Location: /whatsapp_manage");
         exit();
 } elseif ($status === 'SCAN_QR_CODE') {
         // Display the QR code for the user to scan
