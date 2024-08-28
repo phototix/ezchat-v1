@@ -71,7 +71,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                         <div class="d-flex align-items-center">
                                             <div class="chat-user-img online align-self-center me-2 ms-0">
                                                 <img src="/assets/dashboard.png" class="rounded-circle avatar-xs" alt="">
-                                                <span class="user-status"></span>
+                                                <?php if ($showBadgeNumbersInMenu): ?>
+                                                    <span class="user-status"></span>
+                                                <?php endif; ?>
                                             </div>
                                             <div class="overflow-hidden">
                                                 <p class="text-truncate mb-0">Dashboard</p>
