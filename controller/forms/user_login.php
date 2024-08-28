@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             // Fetch user details from the database
-            $stmt = $pdo->prepare("SELECT id, password, salt, username FROM users WHERE email = :email");
+            $stmt = $pdo->prepare("SELECT id, password, salt, username, user_type FROM users WHERE email = :email");
             $stmt->execute([':email' => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Password is correct, login successful
                     session_start();
                     $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['user_type'] = $user['user_type'];
 
                     $userId = $user['username'];
                     $apiKey = '8cd0de4e14cd240a97209625af4bdeb0'; // Replace with your actual API key

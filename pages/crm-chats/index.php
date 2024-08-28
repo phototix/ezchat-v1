@@ -117,13 +117,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <h4 class="mb-4">Chats</h4>
                             </div>
                             <div class="flex-shrink-0">
-                                <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Add Contact">
 
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addContact-exampleModal">
-                                        <i class="bx bx-plus"></i>
-                                    </button>
-                                </div>
                             </div>
                         </div>
                         <form>
@@ -151,13 +145,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <h4 class="mb-0 font-size-11 text-muted text-uppercase">Direct Messages</h4>
                             </div>
                             <div class="flex-shrink-0">
-                                <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="New Message">
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target=".contactModal">
-                                        <i class="bx bx-plus"></i>
-                                    </button>
-                                </div>
                             </div>
                         </div>
 

@@ -3,6 +3,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: /auth-login");
     exit();
 }
+checkAdminAccess();
 
 $stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id");
 $stmt->execute([':id' => $_SESSION['user_id']]);

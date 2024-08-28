@@ -6,6 +6,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+checkAdminAccess();
+
 // Fetch user data for display (optional)
 $user_id = $_SESSION['user_id'];
 $stmt = $pdo->prepare("SELECT username, email FROM users WHERE id = :id");

@@ -8,6 +8,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 stopWhatsappInstance($user['username']);
 $stmt = $pdo->prepare("UPDATE users SET whatsapp_connected = 0 WHERE id = :id");
 $stmt->execute([':id' => $_SESSION['user_id']]);
+
+checkAdminAccess();
 ?>
 <center>
     <br><br><br><br>

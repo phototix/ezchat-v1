@@ -5,6 +5,8 @@ $stmt = $pdo->prepare("SELECT username, email FROM users WHERE id = :id");
 $stmt->execute([':id' => $user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+checkAdminAccess();
+
 stopWhatsappInstance($user['username']);
 ?>
 <center>

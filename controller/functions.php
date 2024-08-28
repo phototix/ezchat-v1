@@ -95,4 +95,11 @@ function fetchWhatsappScreenshot($url, $apiKey) {
     curl_close($ch);
     return $imageData;
 }
+
+function checkAdminAccess(){
+    if($_SESSION['user_type']=="agent"){
+        header("Location: /dashboard");
+        exit();
+    }
+}
 ?>
