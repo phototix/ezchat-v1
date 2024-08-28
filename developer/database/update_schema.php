@@ -5,6 +5,15 @@ include '../../controller/conn.php';
 // Path to the SQL file containing the desired schema
 $sqlFile = 'tables_backup.sql';
 
+// Create database if it does not exist
+try {
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS db_ezchat");
+    $pdo->exec("USE db_ezchat");
+    echo "Database 'db_ezchat' created or already exists.<br>";
+} catch (PDOException $e) {
+    die("Failed to create or select database: " . $e->getMessage());
+}
+
 // Read the SQL file content
 $sqlContent = file_get_contents($sqlFile);
 
