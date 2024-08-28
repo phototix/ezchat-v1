@@ -33,7 +33,7 @@
                                     <form action="" method="post">
                                         <input type="hidden" name="form" value="<?=$Token?>">
                                         <input type="hidden" name="action" value="user_login">
-                                        <input type="hidden" name="page" value="<?=$page?>">
+                                        <input type="hidden" name="page" value="auth-login">
                                         <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
 
                                         <div class="mb-3">
