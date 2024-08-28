@@ -43,7 +43,7 @@ $Year=date("Y");
 $Hour=date("g");
 $Minute=date("i");
 $Seconds=date("s");
-$Time=date("g:i A");
+$Time=date("H:i:s");
 
 $Token=md5($Today."webbycms".uniqid().$Time);
 
