@@ -96,7 +96,7 @@ if ($status === 'WORKING') {
                                 <img src="data:image/png;base64,<?= base64_encode($qrCode) ?>" alt="QR Code">
                                 <script>
                                     setTimeout(function() {
-                                        window.location.href = "/whatsapp_manage";
+                                        window.location.href = "";
                                     }, 10000);
                                 </script>
                         <?php else: ?>
