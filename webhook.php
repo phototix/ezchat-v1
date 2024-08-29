@@ -73,30 +73,20 @@ $recordCount = $stmtCheck->fetchColumn();
 $is_new=1;
 if($recordCount>0){ $is_new=0; }
 
-// Fetch user records
-$stmt = $pdo->prepare("SELECT id FROM users WHERE token=:token");
-$stmt->execute([':token' => $session]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-$userID = $user["id"];
-
 if($is_new==1){
-    // Prepare SQL query to insert data into webhook_messages table
-    $sql = "INSERT INTO webhook_messages (token, date, time, name, country, phone, full_phone, user_id, user_token)
-            VALUES (:token, :date, :time, :name, :country, :phone, :full_phone, :user_id, :user_token)";
-    // Prepare SQL statement to insert the new agent
+    // Fetch user records
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE token=:token");
+    $stmt->execute([':token' => $session]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $userID = $user["id"];
+
     $Token = md5(uniqid());
+    // Prepare SQL query to insert data into webhook_messages table
+    $sql = "INSERT INTO customers (token, date, time, name, country, phone, full_phone, user_id, user_token)
+            VALUES ('$Token', '$Today', '$Time', '$mePushName', '', '$phoneNumber', '$phoneNumber', '$userID', '$session')";
+    // Prepare SQL statement to insert the new agent
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':token' => $Token,
-        ':date' => date("Y-m-d"),
-        ':time' => date("H:i:s"),
-        ':name' => $mePushName,
-        ':country' => '',
-        ':phone' => $phoneNumberSession,
-        ':full_phone' => $phoneNumberSession,
-        ':user_id' => $userId,
-        ':user_token' => $session
-    ]);
+    $stmt->execute();
     $customerToken = $Token;
 }else{
     $customerToken = $customer["token"];

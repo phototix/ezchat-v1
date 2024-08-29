@@ -18,11 +18,11 @@ $offset = ($p - 1) * $recordsPerPage;
 if($offset<0){ $offset=0; }
 
 // Prepare the SQL statement to get the customer data
-$sql = "SELECT id, name, country, phone, full_phone, token FROM customers WHERE user_id='$user_id' ORDER BY id DESC LIMIT $offset, $recordsPerPage";
+$sql = "SELECT id, name, country, phone, full_phone, remark, is_whatsapp, is_business, token FROM customers WHERE user_id='$user_id' ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $stmt = $pdo->query($sql);
 
 // Fetch the customer data
-$customers = $stmt->fetch(PDO::FETCH_ASSOC);
+$customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of records
 $totalRecordsStmt = $pdo->query("SELECT COUNT(*) FROM customers WHERE user_id='$user_id'");
