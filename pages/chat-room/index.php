@@ -62,7 +62,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
                                 <h4 class="mb-4"><?=$customer["name"]?></h4>
-                                <p>(<?=$customer["country"]?>) <?=$customer["phone"]?></p>
+                                <p>
+                                    <?php if (!empty($customer["country"])): ?>
+                                        (<?=$customer["country"]?>) 
+                                    <?php endif; ?>
+                                    <?=$customer["phone"]?>
+                                </p>
                             </div>
                         </div>
 
