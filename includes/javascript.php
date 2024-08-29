@@ -9,6 +9,6 @@
 <script src="/assets/js/pages/theme-style.init.js"></script>
 
 <!-- custom js -->
-<script src="/assets/js/javascript.js"></script>
+<script src="/assets/js/javascript.js?v=<?=$Token?>"></script>
 
 <script src="/assets/js/app.js"></script>
