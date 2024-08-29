@@ -11,21 +11,44 @@ $data = json_decode($rawData, true);
 // Validate and extract necessary fields
 $event = $data['event'] ?? '';
 $session = $data['session'] ?? '';
-$userId = $data['metadata']['user.id'] ?? '';
-$userEmail = $data['metadata']['user.email'] ?? '';
 $meId = $data['me']['id'] ?? '';
 $mePushName = $data['me']['pushName'] ?? '';
-$environmentTier = $data['environment']['tier'] ?? '';
+$payloadId = $data['payload']['id'] ?? '';
+$timestamp = $data['payload']['timestamp'] ?? '';
+$sender = $data['payload']['from'] ?? '';
+$senderNotifyName = $data['payload']['_data']['notifyName'] ?? '';
+$recipient = $data['payload']['to'] ?? '';
+$messageBody = $data['payload']['body'] ?? '';
+$hasMedia = $data['payload']['hasMedia'] ?? 0;
+$ack = $data['payload']['ack'] ?? 0;
+$ackName = $data['payload']['ackName'] ?? '';
 $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
+$tier = $data['environment']['tier'] ?? '';
 
-// Prepare SQL query to insert data into webhook_logs table
-$sql = "INSERT INTO webhook_logs (payload)
-        VALUES ('$rawData')";
+// Prepare SQL query to insert data into webhook_messages table
+$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier)
+        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier)";
 
 try {
     // Prepare and execute the SQL statement
-    $stmt = $pdo->prepare($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':event', $event);
+    $stmt->bindParam(':session', $session);
+    $stmt->bindParam(':me_id', $meId);
+    $stmt->bindParam(':me_push_name', $mePushName);
+    $stmt->bindParam(':payload_id', $payloadId);
+    $stmt->bindParam(':timestamp', $timestamp);
+    $stmt->bindParam(':sender', $sender);
+    $stmt->bindParam(':sender_notify_name', $senderNotifyName);
+    $stmt->bindParam(':recipient', $recipient);
+    $stmt->bindParam(':message_body', $messageBody);
+    $stmt->bindParam(':has_media', $hasMedia);
+    $stmt->bindParam(':ack', $ack);
+    $stmt->bindParam(':ack_name', $ackName);
+    $stmt->bindParam(':environment_version', $environmentVersion);
+    $stmt->bindParam(':engine', $engine);
+    $stmt->bindParam(':tier', $tier);
 
     $stmt->execute();
     
