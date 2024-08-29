@@ -78,23 +78,19 @@ if($is_new==1){
     // Prepare SQL query to insert data into webhook_messages table
     $sql = "INSERT INTO webhook_messages (token, date, time, name, country, phone, full_phone, user_id, user_token)
             VALUES (:token, :date, :time, :name, :country, :phone, :full_phone, :user_id, :user_token)";
-    try {
-        // Prepare and execute the SQL statement
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':token', $Token);
-        $stmt->bindParam(':date', $Today);
-        $stmt->bindParam(':time', $Time);
-        $stmt->bindParam(':name', $mePushName);
-        $stmt->bindParam(':country', "");
-        $stmt->bindParam(':phone', $phoneNumber);
-        $stmt->bindParam(':full_phone', $phoneNumber);
-        $stmt->bindParam(':user_id', $userID);
-        $stmt->bindParam(':user_token', $session);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        // Return error response
-        http_response_code(200);
-    }
+    // Prepare SQL statement to insert the new agent
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':token' => md5(uniqid()),
+        ':date' => date("Y-m-d"),
+        ':time' => date("H:i:s"),
+        ':name' => $mePushName,
+        ':country' => '',
+        ':phone' => $phoneNumberSession,
+        ':full_phone' => $phoneNumberSession,
+        ':user_id' => $userId,
+        ':user_token' => $session
+    ]);
 }
 
 // Prepare SQL query to insert data into webhook_messages table
