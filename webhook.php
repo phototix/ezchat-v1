@@ -51,9 +51,18 @@ if ($recordExists > 0) {
     exit();
 }
 
+$phoneNumberSession = $phoneNumber;
+if($is_who==0){ 
+    // Prepare data for store to table
+    $contact = $recipient;
+    $parts = explode('@', $contact);
+    $phoneNumberRecipient = $parts[0]; // This will be "6596844131"
+    $phoneNumberSession = $phoneNumberRecipient;
+}
+
 // Fetch customer records
 $stmt = $pdo->prepare("SELECT token FROM customers WHERE full_phone=:full_phone AND user_token=:user_token");
-$stmt->execute([':full_phone' => $phoneNumber, ':user_token' => $session]);
+$stmt->execute([':full_phone' => $phoneNumberSession, ':user_token' => $session]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 $recordCount = count($customer);
 $customerToken = $customer["token"];
