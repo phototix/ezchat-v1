@@ -107,7 +107,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                                         <a href="javascript: void(0);" class="unread-msg-user">、
                                             <div class="d-flex align-items-center">
                                                 <div class="chat-user-img online align-self-center me-2 ms-0">
-                                                    <img src="/assets/bullet.png" class="rounded-circle avatar-xs" alt="">
+                                                    <img src="/assets/user.jpg" class="rounded-circle avatar-xs" alt="">
                                                 </div>
                                                 <div class="overflow-hidden">
                                                     <p class="text-truncate mb-0"><?php echo htmlspecialchars($customer['name']); ?></p>
