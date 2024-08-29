@@ -22,7 +22,7 @@ $sql = "SELECT id, name, country, phone, full_phone, token FROM customers WHERE 
 $stmt = $pdo->query($sql);
 
 // Fetch the customer data
-$customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$customers = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Get the total number of records
 $totalRecordsStmt = $pdo->query("SELECT COUNT(*) FROM customers WHERE user_id='$user_id'");

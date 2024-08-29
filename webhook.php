@@ -63,7 +63,12 @@ if($is_who==0){
 $stmt = $pdo->prepare("SELECT token FROM customers WHERE full_phone=:full_phone AND user_token=:user_token");
 $stmt->execute([':full_phone' => $phoneNumberSession, ':user_token' => $session]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
-$recordCount = count($customer);
+
+// Check if the record with the same payload_id already exists
+$checkQuery = "SELECT COUNT(*) FROM customers WHERE full_phone=:full_phone AND user_token=:user_token";
+$stmtCheck = $pdo->prepare($checkQuery);
+$stmtCheck->execute([':full_phone' => $phoneNumberSession, ':user_token' => $session]);
+$recordCount = $stmtCheck->fetchColumn();
 
 $is_new=1;
 if($recordCount>0){ $is_new=0; }
