@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $agent_email;
 
             // Prepare SQL statement to insert the new agent
-            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, salt, token, date, time, stat, name, country, phone, full_phone, user_type, user_id, top) VALUES (:username, :email, :password, :salt, :token, :date, :time, '0', :name, :country, :phone, :full_phone, 'agent', :user_id, '')");
+            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, salt, token, date, time, stat, name, country, phone, full_phone, user_type, user_id, otp) VALUES (:username, :email, :password, :salt, :token, :date, :time, '0', :name, :country, :phone, :full_phone, 'agent', :user_id, '')");
             $stmt->execute([
                 ':username' => $username,
                 ':email' => $agent_email,
