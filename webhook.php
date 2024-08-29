@@ -26,6 +26,20 @@ $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
 $tier = $data['environment']['tier'] ?? '';
 
+// Check if the record with the same payload_id already exists
+$checkQuery = "SELECT COUNT(*) FROM webhook_messages WHERE payload_id = :payload_id";
+$stmtCheck = $conn->prepare($checkQuery);
+$stmtCheck->bindParam(':payload_id', $payloadId);
+$stmtCheck->execute();
+$recordExists = $stmtCheck->fetchColumn();
+
+if ($recordExists > 0) {
+    // If record exists, return a success response without inserting
+    http_response_code(200);
+    echo json_encode(["status" => "duplicate"]);
+    exit();
+}
+
 // Prepare SQL query to insert data into webhook_messages table
 $sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier)
         VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier)";
