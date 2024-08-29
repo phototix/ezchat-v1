@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>EzyChat - Developer Support Documentations</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Bootstrap 4 Template For Software Startups">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script defer src="/docs/assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="/docs/assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/docs/assets/css/theme.css">
+
+</head> 
+
+<body class="docs-page">  
+    <header class="header fixed-top">	 
+	       
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+	                <div class="site-logo"><a class="navbar-brand" href="/"><img class="logo-icon me-2" src="/docs/assets/images/coderdocs-logo.svg" alt="logo">
+	                	Ezy.Chat
+	                </a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+						<li class="list-inline-item"><a href="https://github.com/phototix/diginance-master" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://discord.gg/p5eGGgMg2v" target="_blank"><i class="fab fa-discord fa-fw"></i></a></li>
+		            </ul><!--//social-list-->
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#introduction"><span class="theme-icon-holder me-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-1">What is EzyChat</a></li>
+				    
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#api-usage"><span class="theme-icon-holder me-2"><i class="fas fa-box"></i></span>APIs</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-1">Basic Usage</a></li>
+				    
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="introduction">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Introduction <span class="docs-time">Last updated: 2019-06-01</span></h1>
+					    <section class="docs-intro">
+						    <p>Please request your API key & account ID with your account agent. You may download and refer to the document below to setup your own apps API to send the message through our API endpoint.</p>
+						    You can also <a href="/docs/index.php?page=swagger">Check with Swagger</a>
+						    <br><br>
+						</section><!--//docs-intro-->
+						
+						<h5>PHP Example:</h5>
+						<p>You can use any POST/GET tools such as POSTMAN or BASH to test the API endpoints</p>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded">
+								<code class="php">
+								$dataSend = [
+								 'accountID' => $_POST["accountID"],
+								 'accountKey' => $_POST["accountKey"],
+								 'phoneNo' => $_POST["phoneNo"],
+								 'msgBody' => $_POST["msgBody"],
+								 'msgImage' => $_POST["msgImage"]
+								];
+								$json = json_encode($dataSend); // Encode data to JSON
+								// URL for request POST /message
+								$url = 'https://smartblast.today/formBuilder/api/appPush.php';
+								// Make a POST request
+								$options = stream_context_create(['http' => [
+								'method' => 'POST',
+								'header' => 'Content-type: application/json',
+								'content' => $json
+								]
+								]);
+								// Send a request
+								$resultPush = file_get_contents($url, false, $options);
+								</code>
+							</pre>
+						</div><!--//docs-code-block-->
+						
+				    </header>
+
+				    <section class="docs-section" id="item-1-1">
+						<h2 class="section-heading">Supported Language</h2>
+						<ul>
+						    <li><strong class="me-1">PHP:</strong></li>
+						    <li><strong class="me-1">ASP:</strong></li>
+						    <li><strong class="me-1">JavaScript:</strong></li>
+						    <li><strong class="me-1">ReactNative:</strong></li>
+						    <li><strong class="me-1">Can be any code you familiar with:</strong></li>
+						</ul>
+                        <h5>Callout Examples:</h5>
+                        <div class="callout-block callout-block-info">
+                            
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-info-circle"></i>
+		                            </span><!--//icon-holder-->
+	                                Note
+	                            </h4>
+                                <p>API Endpoint URL:</p>
+                                <p>Portal EzyChat Live: https://portal.ezy.chat/formBuilder/api/appPush.php</p>
+                                <p>
+                                	<table class="table table-bordered">
+                                		<tr>
+                                			<th>Parameters</th>
+                                			<th>Type</th>
+                                			<th>Mandate/Optional</th>
+                                		</tr>
+                                		<tr>
+                                			<td>accountID</td>
+                                			<td>String</td>
+                                			<td>Mandate</td>
+                                		</tr>
+                                		<tr>
+                                			<td>accountKey</td>
+                                			<td>String</td>
+                                			<td>Mandate</td>
+                                		</tr>
+                                		<tr>
+                                			<td>msgBody</td>
+                                			<td>String</td>
+                                			<td>Mandate</td>
+                                		</tr>
+                                		<tr>
+                                			<td>phoneNo</td>
+                                			<td>Number</td>
+                                			<td>Mandate</td>
+                                		</tr>
+                                		<tr>
+                                			<td>msgImage</td>
+                                			<td>String (File URL)</td>
+                                			<td>Optional</td>
+                                		</tr>
+                                	</table>
+                                </p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
+                        
+					</section><!--//section-->
+					
+			    </article>
+			    
+			    <article class="docs-article" id="api-usage">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">APIs</h1>
+					    <section class="docs-intro">
+						    <p>Test Post Form URL:
+							Ezy.Chat Platform
+							https://portal.ezy.chat/formBuilder/api/appPushTest.php
+						    </p>
+						    You can also <a href="/docs/index.php?page=swagger">Check with Swagger</a>
+						    <br><br>
+						</section><!--//docs-intro-->
+				    </header>
+				    
+				    <section class="docs-section" id="item-2-1">
+						<h2 class="section-heading">Reponses Sample:</h2>
+						<p>
+							{<br>
+							 "sent": true,<br>
+							 "message": "Sent to 60123456789@c.us",<br>
+							 "id": "true_60123456789@c.us_3EB09FA716211EAB7B6C"<br>
+							}<br>
+						</p>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+			    <footer class="footer">
+
+				    <div class="footer-bottom text-center py-5">
+					    
+					    <ul class="social-list list-unstyled pb-4 mb-0">
+						    <li class="list-inline-item"><a  href="https://github.com/phototix/diginance-master" target="_blank"><i class="fab fa-github fa-fw"></i></a></li> 
+				            <li class="list-inline-item"><a href="https://discord.gg/p5eGGgMg2v" target="_blank"><i class="fab fa-discord fa-fw"></i></a></li>
+				        </ul><!--//social-list-->
+				        
+				        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for Diginance Sdn Bhd</small>
+			            
+				        
+				    </div>
+				    
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="/docs/assets/plugins/popper.min.js"></script>
+    <script src="/docs/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="/docs/assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="/docs/assets/js/highlight-custom.js"></script> 
+    <script src="/docs/assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="/docs/assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="/docs/assets/js/docs.js"></script> 
+
+</body>
+</html> 
+

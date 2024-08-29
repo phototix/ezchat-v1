@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "EzyChat sendMessage API",
+    "description": "This is a simple API call to use EzyChat send message through WhatsApp",
+    "contact": {
+      "email": "brandon@kkbuddy.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://portal.ezy.chat/formBuilder/api",
+      "description": "SwaggerHub API for EzyChat"
+    }
+  ],
+  "tags": [
+    {
+      "name": "general",
+      "description": "API Calls to send message"
+    }
+  ],
+  "paths": {
+    "/appPush.php": {
+      "post": {
+        "tags": [
+          "general"
+        ],
+        "summary": "send message through API",
+        "description": "Call API",
+        "operationId": "sendMessage",
+        "requestBody": {
+          "description": "Sending a message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/sendMessage"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "API sent"
+          },
+          "404": {
+            "description": "Function not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "sendMessage": {
+        "required": [
+          "accountID",
+          "accountKey",
+          "msgBody",
+          "phoneNo"
+        ],
+        "type": "object",
+        "properties": {
+          "accountID": {
+            "type": "string",
+            "example": "account_name"
+          },
+          "accountKey": {
+            "type": "string",
+            "example": "account_key"
+          },
+          "msgBody": {
+            "type": "string",
+            "example": "Hello world"
+          },
+          "phoneNo": {
+            "type": "string",
+            "example": "60123456789"
+          },
+          "msgImage": {
+            "type": "string",
+            "example": "https://s3-ap-southeast-1.amazonaws.com/misc-webby/panel-assets/6c313e90b2dfe13abe13b6e24614264f.jpg"
+          }
+        }
+      }
+    }
+  }
+}
