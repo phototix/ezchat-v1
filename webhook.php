@@ -82,7 +82,7 @@ if($is_new==1){
     try {
         // Prepare and execute the SQL statement
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':token', $token);
+        $stmt->bindParam(':token', $Token);
         $stmt->bindParam(':date', $Today);
         $stmt->bindParam(':time', $Time);
         $stmt->bindParam(':name', $mePushName);
