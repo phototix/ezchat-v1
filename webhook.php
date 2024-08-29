@@ -71,7 +71,7 @@ try {
     echo json_encode(["status" => "success"]);
 } catch (PDOException $e) {
     // Return error response
-    http_response_code(500);
+    http_response_code(200);
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
 }
 ?>
