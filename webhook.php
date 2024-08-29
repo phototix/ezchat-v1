@@ -28,7 +28,7 @@ $tier = $data['environment']['tier'] ?? '';
 
 // Check if the record with the same payload_id already exists
 $checkQuery = "SELECT COUNT(*) FROM webhook_messages WHERE payload_id = :payload_id";
-$stmtCheck = $conn->prepare($checkQuery);
+$stmtCheck = $pdo->prepare($checkQuery);
 $stmtCheck->bindParam(':payload_id', $payloadId);
 $stmtCheck->execute();
 $recordExists = $stmtCheck->fetchColumn();
