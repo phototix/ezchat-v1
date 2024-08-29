@@ -1,0 +1,7 @@
+/* Additional styling to make the image fit to view */
+.img-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+}
