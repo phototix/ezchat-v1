@@ -92,9 +92,9 @@ if($is_new==1){
         ':user_id' => $userId,
         ':user_token' => $session
     ]);
-    $customerToken = $customer["token"];
-}else{
     $customerToken = $Token;
+}else{
+    $customerToken = $customer["token"];
 }
 
 // Prepare SQL query to insert data into webhook_messages table
