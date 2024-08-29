@@ -198,7 +198,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                                                     <li class="chat-list left" id="1">                        
                                                         <div class="conversation-list">
                                                             <div class="chat-avatar">
-                                                                <img src="assets/images/users/avatar-2.jpg" alt="">
+                                                                <img src="/assets/user.jpg" alt="">
                                                             </div>
                                                             <div class="user-chat-content">
                                                                 <div class="ctext-wrap">
