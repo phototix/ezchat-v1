@@ -51,3 +51,18 @@ function showChatRoom(){
     document.getElementById('users-chat').style.display='';
     
 }
+
+function continueChatRoom(){
+
+    // Get the chat div
+    var chatDiv = document.querySelector('.user-chat');
+
+    chatDiv.classList.remove('user-chat-show');
+
+    document.getElementById('users-chat').style.display='none';
+    
+    chatDiv.classList.add('user-chat-show');
+
+    document.getElementById('users-chat').style.display='';
+    
+}

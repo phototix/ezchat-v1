@@ -18,7 +18,7 @@ $offset = ($p - 1) * $recordsPerPage;
 if($offset<0){ $offset=0; }
 
 // Prepare the SQL statement to get the customer data
-$sql = "SELECT id, name, country, phone, full_phone, remark, is_whatsapp, is_business FROM customers WHERE user_id='$user_id' LIMIT $offset, $recordsPerPage";
+$sql = "SELECT id, name, country, phone, full_phone, remark, is_whatsapp, is_business, token FROM customers WHERE user_id='$user_id' LIMIT $offset, $recordsPerPage";
 $stmt = $pdo->query($sql);
 
 // Fetch the customer data
@@ -103,8 +103,8 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                             <ul class="list-unstyled chat-list chat-user-list" id="customer-list">
 
                                 <?php foreach ($customers as $customer): ?>
-                                    <li onclick="showChatRoom();">
-                                        <a href="javascript: void(0);" class="unread-msg-user">、
+                                    <li>
+                                        <a href="/chat-room?token=<?=$customer['token']?>" class="unread-msg-user">、
                                             <div class="d-flex align-items-center">
                                                 <div class="chat-user-img online align-self-center me-2 ms-0">
                                                     <img src="/assets/user.jpg" class="rounded-circle avatar-xs" alt="">
@@ -289,6 +289,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                         <!-- end chat input section -->
 
                     </div>
+                    
                 </div>
             </div>
         </div>

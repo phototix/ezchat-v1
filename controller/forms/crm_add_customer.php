@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customerCountry = $_POST['customer_country'] ?? '';
     $customerPhone = $_POST['customer_phone'] ?? '';
     $customerRemarks = $_POST['customer_remarks'] ?? '';
+    $userToken = $_SESSION['user_token'];
 
     // Validate input
     if (empty($customerName) || empty($customerCountry) || empty($customerPhone)) {
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Prepare SQL statement to insert new customer record
-    $stmt = $pdo->prepare("INSERT INTO customers (token, date, time, stat, name, country, phone, full_phone, remark, is_whatsapp, is_business, user_id) VALUES (:token, :date, :time, :stat, :name, :country, :phone, :full_phone, :remark, :is_whatsapp, :is_business, :user_id)");
+    $stmt = $pdo->prepare("INSERT INTO customers (token, date, time, stat, name, country, phone, full_phone, remark, is_whatsapp, is_business, user_id, user_token) VALUES (:token, :date, :time, :stat, :name, :country, :phone, :full_phone, :remark, :is_whatsapp, :is_business, :user_id, :user_token)");
     $stmt->execute([
         ':token' => $customerToken,
         ':date' => $Today,
@@ -45,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':remark' => $customerRemarks,
         ':is_whatsapp' => 0, // Default value
         ':is_business' => 0, // Default value
-        ':user_id' => $userId
+        ':user_id' => $userId,
+        ':user_token' => $userToken
     ]);
 
     // Redirect to dashboard or success page

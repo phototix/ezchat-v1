@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     session_start();
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['user_type'] = $user['user_type'];
+                    $_SESSION['user_token'] = $user['username'];
 
                     $userId = $user['username'];
                     $apiKey = '8cd0de4e14cd240a97209625af4bdeb0'; // Replace with your actual API key
