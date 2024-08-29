@@ -2,6 +2,8 @@
 // Include database connection
 include 'controller/conn.php';
 
+header('Content-Type: text/html; charset=utf-8');
+
 // Capture raw POST data
 $rawData = file_get_contents('php://input');
 
