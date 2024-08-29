@@ -75,8 +75,8 @@ if($recordCount>0){ $is_new=0; }
 
 if($is_new==1){
     // Fetch user records
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE token=:token");
-    $stmt->execute([':token' => $session]);
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username=:username");
+    $stmt->execute([':username' => $session]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $userID = $user["id"];
 
