@@ -20,7 +20,7 @@
 
 <li class="nav-item dropdown profile-user-dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="/assets/logo.png" alt="" class="profile-user rounded-circle">
+        <img src="/assets/logo.jpg" alt="" class="profile-user rounded-circle">
     </a>
     <div class="dropdown-menu">
         

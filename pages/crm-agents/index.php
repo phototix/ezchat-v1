@@ -145,7 +145,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                             <div class="flex-grow-1 overflow-hidden">
                                 <div class="d-flex align-items-center">                            
                                     <div class="flex-shrink-0 chat-user-img online user-own-img align-self-center me-3 ms-0">
-                                        <img src="/assets/logo.png" class="rounded-circle avatar-sm" alt="">
+                                        <img src="/assets/logo.jpg" class="rounded-circle avatar-sm" alt="">
                                         <span class="user-status"></span>
                                     </div>
                                     <div class="flex-grow-1 overflow-hidden">
