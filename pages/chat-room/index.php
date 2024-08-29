@@ -137,7 +137,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="flex-grow-1 overflow-hidden">
                                                 <h6 class="text-truncate mb-0 font-size-18">
                                                     <div class="user-profile-show text-reset" id="topbarCustomerName"><?=$customer["name"]?></div>
-                                                    <p class="text-truncate text-muted mb-0">(<?=$customer["country"]?>) <?=$customer["phone"]?></p>
+                                                    <p class="text-truncate text-muted mb-0"><?php if (!empty($customer["country"])): ?>(<?=$customer["country"]?>)<?php endif; ?> <?=$customer["phone"]?></p>
                                                 </h6>
                                             </div>
                                         </div>
