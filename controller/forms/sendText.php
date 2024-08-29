@@ -12,13 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $responseData = sendMessageToWhatsApp($chatId, $messageText, $_SESSION['user_token']);
-
-    $responseData = json_decode($response, true);
-    if ($responseData && $responseData['status'] === 'success') {
-        header("Location: /$page?token=".$token);
-    } else {
-        header("Location: /$page?token=$token&status=error&error=400"); // Bad request
-    }
+    
     exit();
 }
 ?>
