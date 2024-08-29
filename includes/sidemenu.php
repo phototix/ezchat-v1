@@ -1,6 +1,6 @@
 <?php if($showBadgeNumbersInMenu=="yes"){?> 
 <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover" data-bs-container=".sidemenu-navigation" title="Chats">
-    <a class="nav-link <?php if($page=="crm-chats"){?>active<?php }?>" href="/crm-chats" role="tab">
+    <a class="nav-link <?php if($page=="crm-chats"||$page=="chat-room"){?>active<?php }?>" href="/crm-chats" role="tab">
         <i class='bx bx-conversation'></i>
     </a>
 </li>
