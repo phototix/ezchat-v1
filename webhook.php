@@ -20,22 +20,12 @@ $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
 
 // Prepare SQL query to insert data into webhook_logs table
-$sql = "INSERT INTO webhook_logs (event, session, user_id, user_email, me_id, me_push_name, payload, environment_tier, environment_version, engine)
-        VALUES (:event, :session, :user_id, :user_email, :me_id, :me_push_name, '', :environment_tier, :environment_version, :engine)";
+$sql = "INSERT INTO webhook_logs (payload)
+        VALUES ('$data')";
 
 try {
     // Prepare and execute the SQL statement
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':event', $event);
-    $stmt->bindParam(':session', $session);
-    $stmt->bindParam(':user_id', $userId);
-    $stmt->bindParam(':user_email', $userEmail);
-    $stmt->bindParam(':me_id', $meId);
-    $stmt->bindParam(':me_push_name', $mePushName);
-    $stmt->bindParam(':payload', $payload);
-    $stmt->bindParam(':environment_tier', $environmentTier);
-    $stmt->bindParam(':environment_version', $environmentVersion);
-    $stmt->bindParam(':engine', $engine);
 
     $stmt->execute();
     
