@@ -5,12 +5,6 @@ include 'controller/conn.php';
 // Capture raw POST data
 $rawData = file_get_contents('php://input');
 
-// Capture any incoming webhook for debuging and supports.
-$sql = "INSERT INTO webhook_logs (payload) VALUES (:payload)";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(':payload', $rawData);
-$stmt->execute();
-
 // Decode JSON data
 $data = json_decode($rawData, true);
 
@@ -32,6 +26,14 @@ $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
 $tier = $data['environment']['tier'] ?? '';
 
+// Prepare data for store to table
+$contact = $sender;
+$parts = explode('@', $contact);
+$phoneNumber = $parts[0]; // This will be "6596844131"
+
+$is_who = 1; // 0 is EzChat, 1 is Customer.
+if($meId==$sender){ $is_who = 0; }
+
 // Check if the record with the same payload_id already exists
 $checkQuery = "SELECT COUNT(*) FROM webhook_messages WHERE payload_id = :payload_id";
 $stmtCheck = $pdo->prepare($checkQuery);
@@ -47,8 +49,8 @@ if ($recordExists > 0) {
 }
 
 // Prepare SQL query to insert data into webhook_messages table
-$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier)
-        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier)";
+$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who)
+        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who)";
 
 try {
     // Prepare and execute the SQL statement
@@ -69,6 +71,8 @@ try {
     $stmt->bindParam(':environment_version', $environmentVersion);
     $stmt->bindParam(':engine', $engine);
     $stmt->bindParam(':tier', $tier);
+    $stmt->bindParam(':full_phone', $phoneNumber);
+    $stmt->bindParam(':is_who', $is_who);
 
     $stmt->execute();
     
