@@ -32,7 +32,7 @@ $sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, paylo
 
 try {
     // Prepare and execute the SQL statement
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':event', $event);
     $stmt->bindParam(':session', $session);
     $stmt->bindParam(':me_id', $meId);
