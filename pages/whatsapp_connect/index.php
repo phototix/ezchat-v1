@@ -89,23 +89,31 @@ if ($status === 'WORKING') {
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">
 
-                <div class="qr-code-container">
-                        <br><br><br><br>
-                        <center>
-                        <h2>Scan this QR Code to Connect WhatsApp</h2>
-                        <?php if ($qrCode): ?>
-                                <img src="data:image/png;base64,<?= base64_encode($qrCode) ?>" alt="QR Code" style="width: 100%;">
-                                <script>
-                                    setTimeout(function() {
-                                        window.location.href = "";
-                                    }, 10000);
-                                </script>
-                        <?php else: ?>
-                            <p>Unable to fetch QR code. Please try again later.</p>
-                        <?php endif; ?>
-                        <br><br>
-                        <a href="/whatsapp_restart" style="color:red;">Restart Instance</a>
-                        </center>
+                <div class="qr-code-container p-5">
+                    <br><br><br><br>
+                    <center>
+
+                    <?php if ($qrCode): ?>
+                        <div class="card" style="min-height: 16em;">
+                          <div class="card-header">
+                            Scan this QR Code to Connect WhatsApp
+                          </div>
+                          <div class="card-body">
+                            <img src="data:image/png;base64,<?= base64_encode($qrCode) ?>" alt="QR Code" style="width: 100%;">
+                            <script>
+                                setTimeout(function() {
+                                    window.location.href = "";
+                                }, 10000);
+                            </script>
+                          </div>
+                        </div>
+                    <?php else: ?>
+                        <p>Unable to fetch QR code. Please try again later.</p>
+                    <?php endif; ?>
+                    
+                    <br><br>
+                    <a href="/whatsapp_restart" style="color:red;">Restart Instance</a>
+                    </center>
                 </div>
                 
             </div>
