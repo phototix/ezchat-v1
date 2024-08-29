@@ -5,6 +5,10 @@ include 'controller/conn.php';
 // Capture raw POST data
 $rawData = file_get_contents('php://input');
 
+// Capture any incoming webhook for debuging and supports.
+$sql = "INSERT INTO webhook_logs (payload) VALUES ('$rawData')";
+$stmt = $pdo->prepare($sql);
+
 // Decode JSON data
 $data = json_decode($rawData, true);
 
