@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-include '../../controller/conn.php';
+include 'controller/conn.php';
 
 // Get the raw POST data
 $input = file_get_contents('php://input');
