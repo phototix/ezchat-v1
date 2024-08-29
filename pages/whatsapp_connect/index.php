@@ -82,7 +82,7 @@ if ($status === 'WORKING') {
     <!-- end left sidebar-menu -->
 
     <!-- Start User chat -->
-    <div class="user-chat w-100 overflow-hidden">
+    <div class="user-chat w-100 overflow-hidden user-chat-show">
 
         <div class="chat-content d-lg-flex">
 
