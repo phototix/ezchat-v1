@@ -2,13 +2,14 @@
 // Include database connection
 include 'controller/conn.php';
 
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 // Capture raw POST data
 $rawData = file_get_contents('php://input');
-
+$rawData = mb_convert_encoding($rawData, 'UTF-8', 'auto');
 // Decode JSON data
 $data = json_decode($rawData, true);
+
 
 // Validate and extract necessary fields
 $event = $data['event'] ?? '';
