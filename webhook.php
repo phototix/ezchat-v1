@@ -82,8 +82,8 @@ if($is_new==1){
 
     $Token = md5(uniqid());
     // Prepare SQL query to insert data into webhook_messages table
-    $sql = "INSERT INTO customers (token, date, time, name, country, phone, full_phone, user_id, user_token)
-            VALUES ('$Token', '$Today', '$Time', '$mePushName', '', '$phoneNumber', '$phoneNumber', '$userID', '$session')";
+    $sql = "INSERT INTO customers (token, date, time, name, country, phone, full_phone, user_id, user_token, remark)
+            VALUES ('$Token', '$Today', '$Time', '$mePushName', '', '$phoneNumber', '$phoneNumber', '$userID', '$session', 'Chat Auto Contact')";
     // Prepare SQL statement to insert the new agent
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
