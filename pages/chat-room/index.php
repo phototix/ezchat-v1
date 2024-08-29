@@ -281,6 +281,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var chatContainer = document.getElementById('users-conversation');
     chatContainer.scrollTop = chatContainer.scrollHeight;
 });
+
+setTimeout(function() {
+    window.location.href = "";
+}, 10000);
 </script>
 <?php include("includes/javascript.php"); ?>
 <?php include("includes/htmlend.php"); ?>
