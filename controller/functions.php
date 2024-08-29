@@ -102,4 +102,46 @@ function checkAdminAccess(){
         exit();
     }
 }
+
+function sendMessageToWhatsApp($chatId, $messageText, $session) {
+    // API endpoint URL
+    $apiUrl = 'https://server01.ezy.chat/api/sendText';
+    
+    // API key for authentication
+    $apiKey = '8cd0de4e14cd240a97209625af4bdeb0';
+    
+    // Prepare data to send
+    $data = [
+        'chatId' => $chatId,
+        'reply_to' => null,  // You can modify this if you want to reply to a specific message
+        'text' => $messageText,
+        'session' => $session
+    ];
+    
+    // Initialize cURL session
+    $ch = curl_init($apiUrl);
+    
+    // Set cURL options
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'accept: application/json',
+        'X-Api-Key: ' . $apiKey,
+        'Content-Type: application/json'
+    ]);
+    curl_setopt($ch, CURLOPT_POST, true);  // Use POST method
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));  // Send JSON data
+    
+    // Execute cURL request
+    $response = curl_exec($ch);
+    
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        echo 'cURL error: ' . curl_error($ch);
+    } else {
+        echo 'Response from API: ' . $response;
+    }
+    
+    // Close cURL session
+    curl_close($ch);
+}
 ?>

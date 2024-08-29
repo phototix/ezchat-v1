@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form']) && isset($_PO
     }
 
     // Sanitize and validate input
-    $allowedActions = ['user_register', 'user_password_recovery', 'user_verify_otp', 'user_reset_password', 'user_login', 'crm_add_customer', 'crm_add_agent']; // Add more actions as needed
+    $allowedActions = ['user_register', 'user_password_recovery', 'user_verify_otp', 'user_reset_password', 'user_login', 'crm_add_customer', 'crm_add_agent', 'sendText']; // Add more actions as needed
     if (in_array($action, $allowedActions)) {
         $actionFile = WEBBY_ROOT . "/controller/forms/{$action}.php";
 

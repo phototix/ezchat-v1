@@ -20,7 +20,7 @@
 <!-- App Css-->
 <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 <!-- Custom Css-->
-<link href="/assets/style.css?v=<?=$Token?>" id="app-style" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style.css?v=<?=$Token?>" id="app-style" rel="stylesheet" type="text/css" />
 
 
 </head>

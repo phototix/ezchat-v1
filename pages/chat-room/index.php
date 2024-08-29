@@ -231,7 +231,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="position-relative">
                         <div class="chat-input-section p-3 p-lg-4"> 
                        
-                            <form id="chatinput-form" enctype="multipart/form-data" method="post" action=""> 
+                            <form enctype="multipart/form-data" method="post" action="">
+                                <input type="hidden" name="form" value="<?php echo htmlspecialchars($token); ?>">
+                                <input type="hidden" name="action" value="sendText">
+                                <input type="hidden" name="chatId" value="<?=$customer["full_phone"]?>@c.us">
+                                <input type="hidden" name="page" value="<?=$page?>">
+                                <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
                                 <div class="row g-0 align-items-center">  
                                 
                                     <div class="col">
@@ -239,7 +244,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="chat-input-feedback">
                                                 Please Enter a Message
                                             </div>
-                                            <input autocomplete="off" type="text" class="form-control form-control-lg chat-input" autofocus="" id="chat-input" placeholder="Type your message...">
+                                            <input autocomplete="off" name="text" type="text" class="form-control form-control-lg chat-input" autofocus="" placeholder="Type your message..." required>
                                         </div>
                                     </div>
                                     <div class="col-auto">
