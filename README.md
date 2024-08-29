@@ -101,7 +101,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 If you have any questions or need support, please contact:
 
 - **Your Name**
-- **Email:** your.email@example.com
+- **Email:** brandon@kkbuddy.com
 
 ---
 
