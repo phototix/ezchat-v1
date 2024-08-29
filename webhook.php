@@ -51,9 +51,18 @@ if ($recordExists > 0) {
     exit();
 }
 
+// Fetch customer records
+$stmt = $pdo->prepare("SELECT token FROM customers WHERE full_phone=:full_phone AND user_token=:user_token");
+$stmt->execute([':full_phone' => $phoneNumber, ':user_token' => $session]);
+$customer = $stmt->fetch(PDO::FETCH_ASSOC);
+$recordCount = count($customer);
+$customerToken = $customer["token"];
+$is_new=1;
+if($recordCount>0){ $is_new=0; }
+
 // Prepare SQL query to insert data into webhook_messages table
-$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who)
-        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who)";
+$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who, is_new, customer_token)
+        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who, :is_new, :customer_token)";
 
 try {
     // Prepare and execute the SQL statement
@@ -76,6 +85,8 @@ try {
     $stmt->bindParam(':tier', $tier);
     $stmt->bindParam(':full_phone', $phoneNumber);
     $stmt->bindParam(':is_who', $is_who);
+    $stmt->bindParam(':is_new', $is_new);
+    $stmt->bindParam(':customer_token', $customerToken);
 
     $stmt->execute();
     
