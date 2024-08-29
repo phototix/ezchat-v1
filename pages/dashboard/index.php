@@ -137,11 +137,50 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">
 
-                <div class="qr-code-container">
-                        <br><br><br><br>
-                        <center>
-                        <h2>Welcome to EzChat!</h2>
-                        </center>
+                <div class="qr-code-container p-3">
+                    <br><br><br><br>
+                    <center>
+                    <h2>Welcome to EzChat!</h2>
+                    </center>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="card" style="min-height: 16em;">
+                              <div class="card-header">
+                                WhatsApp Server
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">Start/Logout Your Instance</h5>
+                                <p class="card-text">Start connect your WhatsApp and communicate with your customers!</p>
+                                <a href="/whatsapp_manage" class="btn btn-primary">Manage</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="min-height: 16em;">
+                              <div class="card-header">
+                                Featured
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">Join as Official Account</h5>
+                                <p class="card-text">Become Official Business with WhatsApp</p>
+                                <a href="#" class="btn btn-primary">Learn More</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="min-height: 16em;">
+                              <div class="card-header">
+                                Promotion!
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">Version 2 Launch Promo</h5>
+                                <p class="card-text">Stay tune for launch promo!</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 
             </div>
