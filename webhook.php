@@ -21,7 +21,7 @@ $engine = $data['engine'] ?? '';
 
 // Prepare SQL query to insert data into webhook_logs table
 $sql = "INSERT INTO webhook_logs (payload)
-        VALUES ('$data')";
+        VALUES ('$rawData')";
 
 try {
     // Prepare and execute the SQL statement
