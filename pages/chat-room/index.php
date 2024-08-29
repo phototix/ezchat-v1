@@ -154,9 +154,9 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="simplebar-mask">
                                 <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-                                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
+                                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" id="users-conversation">
                                         <div class="simplebar-content" style="padding: 24px;">
-                                            <ul class="list-unstyled chat-conversation-list" id="users-conversation">
+                                            <ul class="list-unstyled chat-conversation-list">
 
                                                 <?php foreach ($messages as $message): ?>
                                                     <?php if($message["is_who"]==1){ ?>
@@ -275,5 +275,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 <!-- end  layout wrapper -->
+<script>
+// Call scrollToBottom when the page loads to ensure it starts at the bottom
+document.addEventListener("DOMContentLoaded", function(event) { 
+    var chatContainer = document.getElementById('users-conversation');
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+});
+</script>
 <?php include("includes/javascript.php"); ?>
 <?php include("includes/htmlend.php"); ?>

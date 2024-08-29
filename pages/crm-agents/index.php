@@ -101,7 +101,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                     <div class="chat-room-list">
     
                             <ul class="list-unstyled chat-list chat-user-list" id="customer-list">
-                                <li id="showChatButton" class="">
+                                <li id="showChatButton" class="" onclick="triggerChatBox();">
                                     <a href="javascript: void(0);" class="unread-msg-user">、
                                         <div class="d-flex align-items-center">
                                             <div class="chat-user-img online align-self-center me-2 ms-0">
@@ -140,7 +140,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                     <div class="col-sm-4 col-8">
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 d-block d-lg-none me-3">
-                                <a href="javascript: void(0);" id="closeChatBody" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                                <a onclick="triggerChatBox();" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
                             </div>
                             <div class="flex-grow-1 overflow-hidden">
                                 <div class="d-flex align-items-center">                            

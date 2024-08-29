@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $responseData = sendMessageToWhatsApp($chatId, $messageText, $_SESSION['user_token']);
-    
+
+    header("Location: /$page?token=$token");
     exit();
 }
 ?>
