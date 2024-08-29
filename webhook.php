@@ -10,7 +10,6 @@ $rawData = mb_convert_encoding($rawData, 'UTF-8', 'auto');
 // Decode JSON data
 $data = json_decode($rawData, true);
 
-
 // Validate and extract necessary fields
 $event = $data['event'] ?? '';
 $session = $data['session'] ?? '';
@@ -92,6 +91,10 @@ if($is_new==1){
         $stmt->bindParam(':user_id', $userID);
         $stmt->bindParam(':user_token', $session);
         $stmt->execute();
+    } catch (PDOException $e) {
+        // Return error response
+        http_response_code(200);
+    }
 }
 
 // Prepare SQL query to insert data into webhook_messages table
