@@ -25,3 +25,13 @@ document.getElementById('closeChatBody').addEventListener('click', function() {
         chatDiv.classList.add('user-chat-show');
     }
 });
+
+function showChatRoom(){
+    var chatBodyDisplay = document.getElementById('users-chat').style.display;
+    if(chatBodyDisplay==""){
+        document.getElementById('users-chat').style.display='none';
+    }else{
+        document.getElementById('users-chat').style.display='';
+    }
+    
+}
