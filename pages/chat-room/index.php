@@ -184,8 +184,15 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 </div>
                                                                 <div class="user-chat-content">
                                                                     <div class="ctext-wrap">
-                                                                        <div class="ctext-wrap-content" id="<?=$message["id"]?>">        
-                                                                            <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
+                                                                        <div class="ctext-wrap-content" id="<?=$message["id"]?>">
+                                                                            <?php if($message["has_media"]==1){ ?>
+                                                                                <audio controls class="audio-player">
+                                                                                    <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="audio/ogg">
+                                                                                    Your browser does not support the audio element.
+                                                                                </audio>
+                                                                            <?php }else{ ?>
+                                                                                <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
+                                                                            <?php } ?>
                                                                         </div>
                                                                         <div class="dropdown align-self-start message-box-drop">                
                                                                             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                    
@@ -210,7 +217,14 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <div class="user-chat-content">
                                                                     <div class="ctext-wrap">
                                                                         <div class="ctext-wrap-content" id="<?=$message["id"]?>">        
-                                                                            <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
+                                                                            <?php if($message["has_media"]==1){ ?>
+                                                                                <audio controls class="audio-player">
+                                                                                    <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="audio/ogg">
+                                                                                    Your browser does not support the audio element.
+                                                                                </audio>
+                                                                            <?php }else{ ?>
+                                                                                <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
+                                                                            <?php } ?>
                                                                         </div>
                                                                         <div class="dropdown align-self-start message-box-drop">                
                                                                             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

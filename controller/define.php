@@ -52,6 +52,8 @@ $showBadgeNumbersInMenu = "";
 
 $Queryresult = [];
 
+$WAHAApiUrl = "https://server01.ezy.chat";
+
 // Parse URL query to - Level 2 URL
 if($page<>""&&$cate<>""&&$action<>""&&$id<>""){
 	$str= str_replace("/".$page."/".$cate."/".$action."/".$id."?", "", $_SERVER["REQUEST_URI"]);

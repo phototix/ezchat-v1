@@ -1,6 +1,8 @@
 <?php
+include '../../controller/conn.php';
+
 // Define the file URL and API key
-$fileUrl = 'https://server01.ezy.chat/api/files/ezychat_superadmin/false_6596844131@c.us_55543FD5AEC8B36D0D31149022255119.oga';
+$fileUrl = $WAHAApiUrl.$_GET["url"];
 $apiKey = '8cd0de4e14cd240a97209625af4bdeb0';
 
 // Initialize cURL session
