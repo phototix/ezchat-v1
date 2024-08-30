@@ -139,7 +139,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="col-sm-4 col-8">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 d-block d-lg-none me-3">
-                                        <a href="/crm-customers" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                                        <a href="/crm-customer" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
                                     </div>
                                     <div class="flex-grow-1 overflow-hidden">
                                         <div class="d-flex align-items-center">                            
