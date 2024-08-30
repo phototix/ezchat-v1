@@ -74,7 +74,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <form>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control bg-light border-0 pe-0" id="serachChatUser" onkeyup="searchUser()" placeholder="Search here.." 
+                                <input type="text" class="form-control bg-light border-0 pe-0" id="serachChatUser" placeholder="Search here.." 
                                 aria-label="Example text with button addon" aria-describedby="searchbtn-addon" autocomplete="off">
                                 <button class="btn btn-light" type="button" id="searchbtn-addon"><i class='bx bx-search align-middle'></i></button>
                             </div>
@@ -300,4 +300,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 </script>
 <?php include("includes/javascript.php"); ?>
+<script>
+$(document).ready(function(){
+
+  $("#serachChatUser").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#customer-list li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <?php include("includes/htmlend.php"); ?>

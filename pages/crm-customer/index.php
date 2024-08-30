@@ -88,7 +88,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                         </div>
                         <form>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control bg-light border-0 pe-0" id="serachChatUser" onkeyup="searchUser()" placeholder="Search here.." 
+                                <input type="text" class="form-control bg-light border-0 pe-0" id="serachChatUser" placeholder="Search here.." 
                                 aria-label="Example text with button addon" aria-describedby="searchbtn-addon" autocomplete="off">
                                 <button class="btn btn-light" type="button" id="searchbtn-addon"><i class='bx bx-search align-middle'></i></button>
                             </div>
@@ -349,4 +349,15 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 </div>
 <!-- end  layout wrapper -->
 <?php include("includes/javascript.php"); ?>
+<script>
+$(document).ready(function(){
+
+  $("#serachChatUser").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#customer-list li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <?php include("includes/htmlend.php"); ?>
