@@ -185,11 +185,16 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <div class="user-chat-content">
                                                                     <div class="ctext-wrap">
                                                                         <div class="ctext-wrap-content" id="<?=$message["id"]?>">
-                                                                            <?php if($message["has_media"]==1){ ?>
+                                                                            <?php if($message["has_media"]==1&&$message["media_type"]=="oga"){ ?>
                                                                                 <audio controls class="audio-player">
                                                                                     <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="audio/ogg">
                                                                                     Your browser does not support the audio element.
                                                                                 </audio>
+                                                                            <?php }elseif($message["has_media"]==1&&$message["media_type"]=="mp4"){ ?>
+                                                                                <video controls class="video-player">
+                                                                                    <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="video/mp4">
+                                                                                    Your browser does not support the video element.
+                                                                                </video>
                                                                             <?php }else{ ?>
                                                                                 <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
                                                                             <?php } ?>
@@ -217,11 +222,16 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <div class="user-chat-content">
                                                                     <div class="ctext-wrap">
                                                                         <div class="ctext-wrap-content" id="<?=$message["id"]?>">        
-                                                                            <?php if($message["has_media"]==1){ ?>
+                                                                            <?php if($message["has_media"]==1&&$message["media_type"]=="oga"){ ?>
                                                                                 <audio controls class="audio-player">
                                                                                     <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="audio/ogg">
                                                                                     Your browser does not support the audio element.
                                                                                 </audio>
+                                                                            <?php }elseif($message["has_media"]==1&&$message["media_type"]=="mp4"){ ?>
+                                                                                <video controls class="video-player">
+                                                                                    <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="video/mp4">
+                                                                                    Your browser does not support the video element.
+                                                                                </video>
                                                                             <?php }else{ ?>
                                                                                 <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
                                                                             <?php } ?>
