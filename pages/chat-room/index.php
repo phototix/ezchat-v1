@@ -85,16 +85,16 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
                             <ul class="list-unstyled chat-list chat-user-list" id="customer-list">
 
-                                <?php foreach ($customers as $customer): ?>
+                                <?php foreach ($customers as $customerRecord): ?>
                                     <li>
-                                        <a href="/chat-room?token=<?=$customer['token']?>" class="unread-msg-user">、
+                                        <a href="/chat-room?token=<?=$customerRecord['token']?>" class="unread-msg-user">、
                                             <div class="d-flex align-items-center">
                                                 <div class="chat-user-img online align-self-center me-2 ms-0">
                                                     <img src="/assets/user.jpg" class="rounded-circle avatar-xs" alt="">
                                                 </div>
                                                 <div class="overflow-hidden">
-                                                    <p class="text-truncate mb-0"><?php echo htmlspecialchars($customer['name']); ?></p>
-                                                    <?php echo htmlspecialchars($customer['full_phone']); ?>
+                                                    <p class="text-truncate mb-0"><?php echo htmlspecialchars($customerRecord['name']); ?></p>
+                                                    <?php echo htmlspecialchars($customerRecord['full_phone']); ?>
                                                 </div>
                                             </div>
                                         </a>
