@@ -12,8 +12,10 @@ $stmt->execute([':token' => $token]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 $customerToken = $customer["token"];
 
+$user_id = $_SESSION['user_id'];
+
 // Prepare the SQL statement to get the customer data
-$sql = "SELECT id, name, country, phone, full_phone, remark, token FROM customers WHERE user_id='$user_id' ORDER BY id DESC LIMIT $offset, $recordsPerPage";
+$sql = "SELECT id, name, country, phone, full_phone, remark, token FROM customers WHERE user_id='$user_id' ORDER BY id DESC";
 $stmt = $pdo->query($sql);
 // Fetch the customer data
 $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,15 +69,16 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="px-4 pt-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
-                                <h4 class="mb-4"><?=$customer["name"]?></h4>
-                                <p>
-                                    <?php if (!empty($customer["country"])): ?>
-                                        (<?=$customer["country"]?>) 
-                                    <?php endif; ?>
-                                    <?=$customer["phone"]?>
-                                </p>
+                                <h4 class="mb-4">Customers</h4>
                             </div>
                         </div>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control bg-light border-0 pe-0" id="serachChatUser" onkeyup="searchUser()" placeholder="Search here.." 
+                                aria-label="Example text with button addon" aria-describedby="searchbtn-addon" autocomplete="off">
+                                <button class="btn btn-light" type="button" id="searchbtn-addon"><i class='bx bx-search align-middle'></i></button>
+                            </div>
+                        </form>
 
                     </div> <!-- .p-4 -->
 
