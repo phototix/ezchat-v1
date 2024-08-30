@@ -33,6 +33,11 @@ $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
 $tier = $data['environment']['tier'] ?? '';
 
+if($hasMedia==1){
+    $mediaURL = $data['payload']['mediaUrl'];
+    $mediaURL = str_replace("http://localhost:3000", "", $mediaURL);
+}
+
 // Prepare data for store to table
 $contact = $sender;
 $parts = explode('@', $contact);
