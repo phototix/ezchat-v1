@@ -24,7 +24,6 @@ if (curl_errno($ch)) {
     $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     if ($httpStatusCode == 200) {
         // Successfully retrieved the file
-        header('Content-Type: audio/ogg');
         echo $response;
     } else {
         // Handle error responses
