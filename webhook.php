@@ -32,6 +32,7 @@ $ackName = $data['payload']['ackName'] ?? '';
 $environmentVersion = $data['environment']['version'] ?? '';
 $engine = $data['engine'] ?? '';
 $tier = $data['environment']['tier'] ?? '';
+$mediaURL="";
 
 if($hasMedia==1){
     $mediaURL = $data['payload']['mediaUrl'];
@@ -103,8 +104,8 @@ if($is_new==1){
 }
 
 // Prepare SQL query to insert data into webhook_messages table
-$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who, is_new, customer_token)
-        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who, :is_new, :customer_token)";
+$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who, is_new, customer_token, media_url)
+        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who, :is_new, :customer_token, :media_url)";
 
 try {
     // Prepare and execute the SQL statement
@@ -129,6 +130,7 @@ try {
     $stmt->bindParam(':is_who', $is_who);
     $stmt->bindParam(':is_new', $is_new);
     $stmt->bindParam(':customer_token', $customerToken);
+    $stmt->bindParam(':media_url', $mediaURL);
 
     $stmt->execute();
     
