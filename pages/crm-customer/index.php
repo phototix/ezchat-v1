@@ -121,15 +121,6 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                             </ul>
 
                         </div>
-
-                        <div class="d-flex align-items-center px-4 mt-5 mb-2">
-                            <div class="flex-grow-1">
-                                <h4 class="mb-0 font-size-11 text-muted text-uppercase">Guides</h4>
-                            </div>
-                            <div class="flex-shrink-0">
-                                
-                            </div>
-                        </div>
                         
                     </div>
 
