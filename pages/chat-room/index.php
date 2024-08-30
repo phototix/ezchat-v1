@@ -12,6 +12,12 @@ $stmt->execute([':token' => $token]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 $customerToken = $customer["token"];
 
+// Prepare the SQL statement to get the customer data
+$sql = "SELECT id, name, country, phone, full_phone, remark, token FROM customers WHERE user_id='$user_id' ORDER BY id DESC LIMIT $offset, $recordsPerPage";
+$stmt = $pdo->query($sql);
+// Fetch the customer data
+$customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 $full_phone = $customer["full_phone"];
 $stmt = $pdo->prepare("SELECT * FROM webhook_messages WHERE customer_token = :customer_token");
 $stmt->execute([':customer_token' => $customerToken]);
@@ -79,18 +85,21 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
                             <ul class="list-unstyled chat-list chat-user-list" id="customer-list">
 
-                                <li onclick="continueChatRoom()">
-                                    <a href="#" class="unread-msg-user">、
-                                        <div class="d-flex align-items-center">
-                                            <div class="chat-user-img online align-self-center me-2 ms-0">
-                                                <img src="/assets/bullet.png" class="rounded-circle avatar-xs" alt="">
+                                <?php foreach ($customers as $customer): ?>
+                                    <li>
+                                        <a href="/chat-room?token=<?=$customer['token']?>" class="unread-msg-user">、
+                                            <div class="d-flex align-items-center">
+                                                <div class="chat-user-img online align-self-center me-2 ms-0">
+                                                    <img src="/assets/user.jpg" class="rounded-circle avatar-xs" alt="">
+                                                </div>
+                                                <div class="overflow-hidden">
+                                                    <p class="text-truncate mb-0"><?php echo htmlspecialchars($customer['name']); ?></p>
+                                                    <?php echo htmlspecialchars($customer['full_phone']); ?>
+                                                </div>
                                             </div>
-                                            <div class="overflow-hidden">
-                                                <p class="text-truncate mb-0">Continue Chat</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                                 
                             </ul>
 
