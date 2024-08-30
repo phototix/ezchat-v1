@@ -197,7 +197,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                         </div>
                                                                     </div>
                                                                     <div class="conversation-name">
-                                                                        <small class="text-muted time">10:07 am</small> <span class="text-success check-message-icon"><i class="bx bx-check-double"></i></span>
+                                                                        <small class="text-muted time"><?=date('Y-m-d H:i:s', $message["timestamp"]);?></small> <span class="text-success check-message-icon"><i class="bx bx-check-double"></i></span>
                                                                     </div>
                                                                 </div>                
                                                             </div>            
@@ -222,7 +222,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                         </div>
                                                                     </div>
                                                                     <div class="conversation-name">
-                                                                        <small class="text-muted time">10:12 am</small> <span class="text-success check-message-icon"><i class="bx bx-check-double"></i></span>
+                                                                        <small class="text-muted time"><?=date('Y-m-d H:i:s', $message["timestamp"]);?></small> <span class="text-success check-message-icon"><i class="bx bx-check-double"></i></span>
                                                                     </div>
                                                                 </div>                
                                                             </div>
