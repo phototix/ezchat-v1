@@ -195,6 +195,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                                     <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="video/mp4">
                                                                                     Your browser does not support the video element.
                                                                                 </video>
+                                                                            <?php }elseif($message["has_media"]==1&&$message["media_type"]=="jpeg"){ ?>
+                                                                                <div class="message-img mb-0"><div class="message-img-list">
+                                                                                    <a class="popup-img d-inline-block" href="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>">
+                                                                                        <img src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" alt="" class="rounded border">
+                                                                                    </a>
+                                                                                </div>
                                                                             <?php }else{ ?>
                                                                                 <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
                                                                             <?php } ?>
@@ -232,6 +238,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                                     <source src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" type="video/mp4">
                                                                                     Your browser does not support the video element.
                                                                                 </video>
+                                                                            <?php }elseif($message["has_media"]==1&&$message["media_type"]=="jpeg"){ ?>
+                                                                                <div class="message-img mb-0"><div class="message-img-list">
+                                                                                    <a class="popup-img d-inline-block" href="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>">
+                                                                                        <img src="/developer/WAMedia/readmedia.php?url=<?=$message["media_url"]?>" alt="" class="rounded border">
+                                                                                    </a>
+                                                                                </div>
                                                                             <?php }else{ ?>
                                                                                 <p class="mb-0 ctext-content"><?=$message["message_body"]?></p>
                                                                             <?php } ?>
