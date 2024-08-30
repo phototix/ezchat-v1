@@ -10,6 +10,11 @@ $rawData = mb_convert_encoding($rawData, 'UTF-8', 'auto');
 // Decode JSON data
 $data = json_decode($rawData, true);
 
+// Add incoming webhook payload for debug & maintainance.
+$logQuery = "INSERT INTO chat_logs (token, timestamp, payload) VALUES ('$Token', '$Today $Time', '$rawData')";
+$stmtCheck = $pdo->prepare($logQuery);
+$stmtCheck->execute();
+
 // Validate and extract necessary fields
 $event = $data['event'] ?? '';
 $session = $data['session'] ?? '';
