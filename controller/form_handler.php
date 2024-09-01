@@ -1,7 +1,7 @@
 <?php
 // Check if form and action are set
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && isset($_POST['action'])) {
-    $formToken = $_POST['form'];
+    $formToken = $_POST['token'];
     $action = $_POST['action'];
     $page = $_POST['page'];
 
