@@ -289,8 +289,6 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
         </div>
     </div>
     <!-- End Add contact Modal -->
-
-    </video>     -->
 </div>
 <!-- end  layout wrapper -->
 <?php include("includes/javascript.php"); ?>

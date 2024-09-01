@@ -47,7 +47,7 @@ if($hasMedia==1){
 // Prepare data for store to table
 $contact = $sender;
 $parts = explode('@', $contact);
-$phoneNumber = $parts[0]; // This will be "6596844131"
+$phoneNumber = $parts[0];
 
 $is_who = 1; // 0 is EzChat, 1 is Customer.
 if($meId==$sender){ $is_who = 0; }
@@ -99,7 +99,7 @@ if($is_new==1){
     $Token = md5(uniqid());
     // Prepare SQL query to insert data into webhook_messages table
     $sql = "INSERT INTO customers (token, date, time, name, country, phone, full_phone, user_id, user_token, remark)
-            VALUES ('$Token', '$Today', '$Time', '$mePushName', '', '$phoneNumber', '$phoneNumber', '$userID', '$session', 'Chat Auto Contact')";
+            VALUES ('$Token', '$Today', '$Time', '$senderNotifyName', '', '$phoneNumber', '$phoneNumber', '$userID', '$session', 'Chat Auto Contact')";
     // Prepare SQL statement to insert the new agent
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -118,7 +118,7 @@ try {
     $stmt->bindParam(':event', $event);
     $stmt->bindParam(':session', $session);
     $stmt->bindParam(':me_id', $meId);
-    $stmt->bindParam(':me_push_name', $mePushName);
+    $stmt->bindParam(':me_push_name', $senderNotifyName);
     $stmt->bindParam(':payload_id', $payloadId);
     $stmt->bindParam(':timestamp', $timestamp);
     $stmt->bindParam(':sender', $sender);
