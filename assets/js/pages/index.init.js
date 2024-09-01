@@ -73,7 +73,7 @@ function themeColor(e) {
             (e = document.getElementsByClassName(s)),
             (t = window.getComputedStyle(e[0], null).getPropertyValue("background-color")),
             (a = document.querySelector(".user-chat-overlay")),
-            "bgcolor-radio8" == s ? ((t = "#4eac6d"), (a.style.background = null)) : (a.style.background = t),
+            "bgcolor-radio8" == s ? ((t = "#50a5f1"), (a.style.background = null)) : (a.style.background = t),
             (rgbColor = t.substring(t.indexOf("(") + 1, t.indexOf(")"))),
             document.documentElement.style.setProperty("--bs-primary-rgb", rgbColor));
         var i,
@@ -95,7 +95,7 @@ function themeColor(e) {
                     (t = document.getElementsByClassName(i)) &&
                         ((a = window.getComputedStyle(t[0], null).getPropertyValue("background-color")),
                         (s = document.querySelector(".user-chat-overlay")),
-                        "bgcolor-radio8" == i ? ((a = "#4eac6d"), (s.style.background = null)) : (s.style.background = a),
+                        "bgcolor-radio8" == i ? ((a = "#50a5f1"), (s.style.background = null)) : (s.style.background = a),
                         (rgbColor = a.substring(a.indexOf("(") + 1, a.indexOf(")"))),
                         document.documentElement.style.setProperty("--bs-primary-rgb", rgbColor),
                         window.localStorage.setItem("color", i)));
