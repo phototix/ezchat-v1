@@ -1,7 +1,4 @@
 <?php
-// Include your database connection
-include '../controller/conn.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customerName = $_POST['customer_name'] ?? '';
     $customerCountry = $_POST['customer_country'] ?? '';
