@@ -1,8 +1,9 @@
 <?php
 // Check if form and action are set
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form']) && isset($_POST['action'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && isset($_POST['action'])) {
     $formToken = $_POST['form'];
     $action = $_POST['action'];
+    $page = $_POST['page']；
 
     // Sanitize and validate input
     $allowedActions = ['user_register', 'user_password_recovery', 'user_verify_otp', 'user_reset_password', 'user_login', 'crm_add_customer', 'crm_add_agent', 'sendText']; // Add more actions as needed
@@ -19,9 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form']) && isset($_PO
             exit();
         } else {
             echo "Error: Action file not found.";
+            header("Location: /$page?status=error&error=502");
         }
     } else {
         echo "Error: Invalid action specified.";
+        header("Location: /$page?status=error&error=502");
     }
 }
 ?>
