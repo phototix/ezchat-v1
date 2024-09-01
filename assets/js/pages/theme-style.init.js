@@ -4,7 +4,7 @@ function themeColor() {
             document.documentElement.style.setProperty("--bs-primary-rgb", "78, 172, 109");
             break;
         case "bgcolor-radio2":
-            document.documentElement.style.setProperty("--bs-primary-rgb", "80, 165, 241");
+            document.documentElement.style.setProperty("--bs-primary-rgb", "239, 71, 111");
             break;
         case "bgcolor-radio4":
             document.documentElement.style.setProperty("--bs-primary-rgb", "97, 83, 204");
