@@ -30,6 +30,7 @@ $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $totalRecordsStmt = $pdo->query("SELECT COUNT(*) FROM users WHERE user_id='$user_id' AND user_type='agent'");
 $totalRecords = $totalRecordsStmt->fetchColumn();
 $totalPages = ceil($totalRecords / $recordsPerPage);
+$strI=0;
 ?>
 <?php include("includes/htmlstart.php"); ?>
 <div class="layout-wrapper d-lg-flex">
@@ -176,9 +177,12 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($customers as $customer): ?>
+                            <?php 
+                            foreach ($customers as $customer): 
+                            $strI++;    
+                            ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($customer['id']); ?></td>
+                                <td><?php echo htmlspecialchars($strI); ?></td>
                                 <td><?php echo htmlspecialchars($customer['name']); ?></td>
                                 <td><?php echo htmlspecialchars($customer['email']); ?><br>(<?php echo htmlspecialchars($customer['username']); ?>)</td>
                                 <td><?php echo htmlspecialchars($customer['country']); ?></td>
