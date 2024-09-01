@@ -71,6 +71,15 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="flex-grow-1">
                                 <h4 class="mb-4">Customers</h4>
                             </div>
+                            <div class="flex-shrink-0">
+                                <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Add Contact">
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addContact-exampleModal">
+                                        <i class="bx bx-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <form>
                             <div class="input-group mb-3">
@@ -328,6 +337,57 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- end user chat content -->
     </div>
     <!-- End User chat -->
+
+    <!-- Start Add contact Modal -->
+    <div class="modal fade" id="addContact-exampleModal" tabindex="-1" role="dialog" aria-labelledby="addContact-exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-header-colored shadow-lg border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white font-size-16" id="addContact-exampleModalLabel">Create Customer Record</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="create_customer" action="" method="post">
+                        <input type="hidden" name="form" value="<?=$Token?>">
+                        <input type="hidden" name="action" value="crm_add_customer">
+                        <input type="hidden" name="page" value="<?=$page?>">
+                        <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
+                        <div class="mb-3">
+                            <label for="customer_name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="customer_country" class="form-label">Country</label>
+                            <select class="form-control" name="customer_country" id="customer_country" required>
+                                <?php foreach ($countries as $countryName => $countryCode) : ?>
+                                    <option value="<?php echo htmlspecialchars($countryCode); ?>"><?php echo htmlspecialchars($countryName); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="customer_phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Enter phone" required="required">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="customer_remarks" class="form-label">Remark</label>
+                            <input type="text" class="form-control" id="customer_remarks" name="customer_remarks" placeholder="Enter Remarks">
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('create_customer').submit();">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Add contact Modal -->
 
 </div>
 <!-- end  layout wrapper -->
