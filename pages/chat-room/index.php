@@ -156,10 +156,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <img src="/assets/logo.jpg" class="rounded-circle avatar-sm" alt="">
                                             </div>
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <h6 class="text-truncate mb-0 font-size-18">
-                                                    <div class="user-profile-show text-reset" id="topbarCustomerName"><?=$customer["name"]?></div>
-                                                    <p class="text-truncate text-muted mb-0"><?php if (!empty($customer["country"])): ?>(<?=$customer["country"]?>)<?php endif; ?> <?=$customer["phone"]?></p>
-                                                </h6>
+                                                <a href="/crm-customer-details?token=<?=$customer['token']?>">
+                                                    <h6 class="text-truncate mb-0 font-size-18">
+                                                        <div class="user-profile-show text-reset" id="topbarCustomerName"><?=$customer["name"]?></div>
+                                                        <p class="text-truncate text-muted mb-0"><?php if (!empty($customer["country"])): ?>(<?=$customer["country"]?>)<?php endif; ?> <?=$customer["phone"]?></p>
+                                                    </h6>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

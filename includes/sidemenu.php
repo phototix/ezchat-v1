@@ -7,7 +7,7 @@
 <?php }?>
 
 <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover" data-bs-container=".sidemenu-navigation" title="Customer">
-    <a class="nav-link <?php if($page=="crm-customer"||$page=="chat-room"){?>active<?php }?>" href="/crm-customer" role="tab">
+    <a class="nav-link <?php if($page=="crm-customer"||$page=="chat-room"||$page=="crm-customer-details"){?>active<?php }?>" href="/crm-customer" role="tab">
         <i class='bx bxs-user-detail'></i>
     </a>
 </li>
