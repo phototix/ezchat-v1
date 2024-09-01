@@ -14,9 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && isset($_P
         if (file_exists($actionFile)) {
             // Include the action file
             include $actionFile;
-
-            // Redirect to a success page after processing
-            header("Location: /?status=success");
             exit();
         } else {
             echo "Error: Action file not found.";
