@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && isset($_POST['action'])) {
     $formToken = $_POST['form'];
     $action = $_POST['action'];
-    $page = $_POST['page']；
+    $page = $_POST['page'];
 
     // Sanitize and validate input
     $allowedActions = ['user_register', 'user_password_recovery', 'user_verify_otp', 'user_reset_password', 'user_login', 'crm_add_customer', 'crm_add_agent', 'sendText']; // Add more actions as needed
