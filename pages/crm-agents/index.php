@@ -235,7 +235,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
                 </div>
                 <div class="modal-body p-4">
                     <form id="create_agent" action="" method="post">
-                        <input type="hidden" name="form" value="<?=$Token?>">
+                        <input type="hidden" name="token" value="<?=$Token?>">
                         <input type="hidden" name="action" value="crm_add_agent">
                         <input type="hidden" name="page" value="<?=$page?>">
                         <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
