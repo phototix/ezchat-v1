@@ -18,7 +18,7 @@ date_default_timezone_set('Asia/Singapore');
 require("define.php");
 
 $host = 'localhost';
-$db = 'db_ezchat';
+$db = 'db_EzyChat';
 $user = 'root';
 $pass = '#Abccy1982#';
 

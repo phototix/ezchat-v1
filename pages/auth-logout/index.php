@@ -10,7 +10,7 @@ session_destroy();
             <div class="col-xl-3 col-lg-4">
                 <div class="p-4 pb-0 p-lg-5 pb-lg-0 auth-logo-section">
                     <div class="text-white-50">
-                        <h3><a href="/" class="text-white"><i class="bx bxs-message-alt-detail align-middle text-white h3 mb-1 me-2"></i> EzChat</a></h5>
+                        <h3><a href="/" class="text-white"><i class="bx bxs-message-alt-detail align-middle text-white h3 mb-1 me-2"></i> EzyChat</a></h5>
                         <p class="font-size-16">Best WhatsApp CRM in Malaysia</p>
                     </div>
                     <div class="mt-auto">
@@ -45,7 +45,7 @@ session_destroy();
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="text-center text-muted p-4">
-                                    <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> EzChat</p>
+                                    <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> EzyChat</p>
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->

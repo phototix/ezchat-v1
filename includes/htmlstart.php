@@ -4,11 +4,11 @@
 <head>
 
 <meta charset="utf-8" />
-<title>EzChat | WhatsApp Customer Service Chat Application</title>
+<title>EzyChat | WhatsApp Customer Service Chat Application</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="EzChat - WhatsApp Customer Service Chat Application" name="description" />
+<meta content="EzyChat - WhatsApp Customer Service Chat Application" name="description" />
 <meta name="keywords" content="WhatsApp Customer Service Chat Application"/>
-<meta content="EzChat" name="author" />
+<meta content="EzyChat" name="author" />
 <!-- App favicon -->
 <link rel="shortcut icon" href="/assets/images/favicon.ico" id="tabIcon">
 

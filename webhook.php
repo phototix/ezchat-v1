@@ -49,7 +49,7 @@ $contact = $sender;
 $parts = explode('@', $contact);
 $phoneNumber = $parts[0];
 
-$is_who = 1; // 0 is EzChat, 1 is Customer.
+$is_who = 1; // 0 is EzyChat, 1 is Customer.
 if($meId==$sender){ $is_who = 0; }
 
 // Check if the record with the same payload_id already exists

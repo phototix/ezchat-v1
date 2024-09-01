@@ -140,7 +140,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="qr-code-container p-3">
                     <br><br><br><br>
                     <center>
-                    <h2>Welcome to EzChat!</h2>
+                    <h2>Welcome to EzyChat!</h2>
                     </center>
 
                     <div class="row">
