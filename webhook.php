@@ -89,7 +89,7 @@ $recordCount = $stmtCheck->fetchColumn();
 $is_new=1;
 if($recordCount>0){ $is_new=0; }
 
-if($is_new==1){
+if($is_new==1&&$phoneNumber!=="status"){
     // Fetch user records
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username=:username");
     $stmt->execute([':username' => $session]);
@@ -108,44 +108,46 @@ if($is_new==1){
     $customerToken = $customer["token"];
 }
 
-// Prepare SQL query to insert data into webhook_messages table
-$sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who, is_new, customer_token, media_url, media_type)
-        VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who, :is_new, :customer_token, :media_url, :media_type)";
+if($phoneNumber!=="status"){
+    // Prepare SQL query to insert data into webhook_messages table
+    $sql = "INSERT INTO webhook_messages (event, session, me_id, me_push_name, payload_id, timestamp, sender, sender_notify_name, recipient, message_body, has_media, ack, ack_name, environment_version, engine, tier, full_phone, is_who, is_new, customer_token, media_url, media_type)
+            VALUES (:event, :session, :me_id, :me_push_name, :payload_id, :timestamp, :sender, :sender_notify_name, :recipient, :message_body, :has_media, :ack, :ack_name, :environment_version, :engine, :tier, :full_phone, :is_who, :is_new, :customer_token, :media_url, :media_type)";
 
-try {
-    // Prepare and execute the SQL statement
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':event', $event);
-    $stmt->bindParam(':session', $session);
-    $stmt->bindParam(':me_id', $meId);
-    $stmt->bindParam(':me_push_name', $senderNotifyName);
-    $stmt->bindParam(':payload_id', $payloadId);
-    $stmt->bindParam(':timestamp', $timestamp);
-    $stmt->bindParam(':sender', $sender);
-    $stmt->bindParam(':sender_notify_name', $senderNotifyName);
-    $stmt->bindParam(':recipient', $recipient);
-    $stmt->bindParam(':message_body', $messageBody);
-    $stmt->bindParam(':has_media', $hasMedia);
-    $stmt->bindParam(':ack', $ack);
-    $stmt->bindParam(':ack_name', $ackName);
-    $stmt->bindParam(':environment_version', $environmentVersion);
-    $stmt->bindParam(':engine', $engine);
-    $stmt->bindParam(':tier', $tier);
-    $stmt->bindParam(':full_phone', $phoneNumber);
-    $stmt->bindParam(':is_who', $is_who);
-    $stmt->bindParam(':is_new', $is_new);
-    $stmt->bindParam(':customer_token', $customerToken);
-    $stmt->bindParam(':media_url', $mediaURL);
-    $stmt->bindParam(':media_type', $mediaExt);
+    try {
+        // Prepare and execute the SQL statement
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':event', $event);
+        $stmt->bindParam(':session', $session);
+        $stmt->bindParam(':me_id', $meId);
+        $stmt->bindParam(':me_push_name', $senderNotifyName);
+        $stmt->bindParam(':payload_id', $payloadId);
+        $stmt->bindParam(':timestamp', $timestamp);
+        $stmt->bindParam(':sender', $sender);
+        $stmt->bindParam(':sender_notify_name', $senderNotifyName);
+        $stmt->bindParam(':recipient', $recipient);
+        $stmt->bindParam(':message_body', $messageBody);
+        $stmt->bindParam(':has_media', $hasMedia);
+        $stmt->bindParam(':ack', $ack);
+        $stmt->bindParam(':ack_name', $ackName);
+        $stmt->bindParam(':environment_version', $environmentVersion);
+        $stmt->bindParam(':engine', $engine);
+        $stmt->bindParam(':tier', $tier);
+        $stmt->bindParam(':full_phone', $phoneNumber);
+        $stmt->bindParam(':is_who', $is_who);
+        $stmt->bindParam(':is_new', $is_new);
+        $stmt->bindParam(':customer_token', $customerToken);
+        $stmt->bindParam(':media_url', $mediaURL);
+        $stmt->bindParam(':media_type', $mediaExt);
 
-    $stmt->execute();
-    
-    // Return success response
-    http_response_code(200);
-    echo json_encode(["status" => "success"]);
-} catch (PDOException $e) {
-    // Return error response
-    http_response_code(200);
-    echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+        $stmt->execute();
+        
+        // Return success response
+        http_response_code(200);
+        echo json_encode(["status" => "success"]);
+    } catch (PDOException $e) {
+        // Return error response
+        http_response_code(200);
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    }
 }
 ?>
