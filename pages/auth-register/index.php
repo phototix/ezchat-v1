@@ -35,7 +35,6 @@
                                         <input type="hidden" name="token" value="<?=$Token?>">
                                         <input type="hidden" name="action" value="user_register">
                                         <input type="hidden" name="page" value="<?=$page?>">
-                                        <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required="required">

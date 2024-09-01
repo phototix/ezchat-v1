@@ -30,6 +30,8 @@
             <a class="dropdown-item d-flex align-items-center justify-content-between" href="whatsapp_manage.html">Manage WhatsApp</a>
         <?php }?>
 
+        <a class="dropdown-item d-flex align-items-center justify-content-between" href="user-settings.html">Setting</a>
+
         <div class="dropdown-divider"></div>
         
         <a class="dropdown-item d-flex align-items-center justify-content-between" href="auth-logout.html">Log out <i class="bx bx-log-out-circle text-muted ms-1"></i></a>

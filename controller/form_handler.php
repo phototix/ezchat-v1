@@ -1,14 +1,8 @@
 <?php
 // Check if form and action are set
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form']) && isset($_POST['action']) && isset($_POST['csrf_token'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form']) && isset($_POST['action'])) {
     $formToken = $_POST['form'];
     $action = $_POST['action'];
-    $csrfToken = $_POST['csrf_token'];
-
-    // Verify CSRF token
-    if (!verifyCsrfToken($csrfToken)) {
-        die("Error: Invalid CSRF token.");
-    }
 
     // Sanitize and validate input
     $allowedActions = ['user_register', 'user_password_recovery', 'user_verify_otp', 'user_reset_password', 'user_login', 'crm_add_customer', 'crm_add_agent', 'sendText']; // Add more actions as needed
