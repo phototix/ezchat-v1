@@ -128,7 +128,7 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
     <!-- end chat-leftsidebar -->
 
     <!-- Start User chat -->
-    <div class="user-chat w-100 overflow-hidden">
+    <div class="user-chat w-100 overflow-hidden user-chat-show">
         <div class="user-chat-overlay"></div>                
 
             <div class="chat-content d-lg-flex">
@@ -178,6 +178,9 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         <!-- Save Button -->
                         <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <a href="/chat-room?token=<?=$token?>">
+                            <div type="submit" class="btn btn-primary">Back to Chat</div>
+                        </a>
                     </form>
                 </div>
 

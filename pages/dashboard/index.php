@@ -147,6 +147,18 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
                               <div class="card-header">
+                                Customer
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">Manage Your Customer</h5>
+                                <p class="card-text">Become Official Business with WhatsApp</p>
+                                <a href="#" class="btn btn-primary">Go</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="min-height: 16em;">
+                              <div class="card-header">
                                 WhatsApp Server
                               </div>
                               <div class="card-body">

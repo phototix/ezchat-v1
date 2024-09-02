@@ -170,10 +170,8 @@ $strI=0;
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Country</th>
-                                <th>Phone</th>
+                                <th>Agent Details</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -183,10 +181,14 @@ $strI=0;
                             ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($strI); ?></td>
-                                <td><?php echo htmlspecialchars($customer['name']); ?></td>
-                                <td><?php echo htmlspecialchars($customer['email']); ?><br>(<?php echo htmlspecialchars($customer['username']); ?>)</td>
-                                <td><?php echo htmlspecialchars($customer['country']); ?></td>
-                                <td><?php echo htmlspecialchars($customer['phone']); ?></td>
+                                <td>
+                                    <?php echo htmlspecialchars($customer['name']); ?><br>
+                                    <?php echo htmlspecialchars($customer['email']); ?><br>
+                                    (<?php echo htmlspecialchars($customer['full_phone']); ?>)
+                                </td>
+                                <td>
+                                    
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
