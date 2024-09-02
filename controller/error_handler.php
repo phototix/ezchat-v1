@@ -20,6 +20,11 @@ $errorMessages = [
     '502' => 'Incorrect password.',
     '503' => 'Email not found.',
     '504' => 'Database error',
+    '601' => 'CSRF token validation failed.',
+    '602' => 'Required fields are missing.',
+    '603' => 'No changes were made to the customer profile.',
+    '604' => 'Database error occurred.',
+    '605' => 'Invalid request method.',
 ];
 
 if(isset($error)){

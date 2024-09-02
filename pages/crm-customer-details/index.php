@@ -135,6 +135,11 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 <div class="container mt-5">
                     <h2>Edit Customer Profile</h2>
+
+                    <?php if(!empty($status)){ ?>
+                        <?php include(WEBBY_ROOT.'/controller/error_handler.php'); ?>
+                    <?php } ?>
+
                     <form method="post" action="">
                         <input type="hidden" name="token" value="<?=$Token?>">
                         <input type="hidden" name="action" value="crm_update_customer">
