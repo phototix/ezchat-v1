@@ -155,11 +155,9 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="mb-3">
                             <label for="customerCountry" class="form-label">Country</label>
                             <select class="form-select" id="customerCountry" name="customer_country">
-                                <option selected value="<?= htmlspecialchars($customerData['country']) ?>"><?= htmlspecialchars($customerData['country']) ?></option>
-                                <option value="USA">USA</option>
-                                <option value="Canada">Canada</option>
-                                <option value="UK">UK</option>
-                                <option value="Australia">Australia</option>
+                                <?php foreach ($countries as $countryName => $countryCode) : ?>
+                                    <option <?php if($customerData['country']==$countryCode){ ?> selected<?php } ?>value="<?php echo htmlspecialchars($countryCode); ?>"><?php echo htmlspecialchars($countryName); ?></option>
+                                <?php endforeach; ?>
                                 <!-- Add more countries as needed -->
                             </select>
                         </div>
