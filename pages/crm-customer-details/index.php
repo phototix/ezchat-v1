@@ -135,7 +135,10 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 <div class="container mt-5">
                     <h2>Edit Customer Profile</h2>
-                    <form method="post" action="edit_customer_profile.php">
+                    <form method="post" action="">
+                        <input type="hidden" name="token" value="<?=$Token?>">
+                        <input type="hidden" name="action" value="crm_update_customer">
+                        <input type="hidden" name="page" value="<?=$page?>">
                         <!-- Hidden Token for CSRF protection -->
                         <input type="hidden" name="csrf_token" value="<?=generateCsrfToken()?>">
 
@@ -167,9 +170,6 @@ $customerData = $stmt->fetch(PDO::FETCH_ASSOC);
                             <label for="customerRemarks" class="form-label">Remarks</label>
                             <textarea class="form-control" id="customerRemarks" name="customer_remarks" rows="3"><?= htmlspecialchars($customerData['remark']) ?></textarea>
                         </div>
-
-                        <!-- Form action hidden input to match with the PHP file for handling -->
-                        <input type="hidden" name="action" value="edit_customer">
 
                         <!-- Save Button -->
                         <button type="submit" class="btn btn-primary">Save Changes</button>
