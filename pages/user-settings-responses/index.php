@@ -4,11 +4,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$stmt = $pdo->prepare("SELECT username, whatsapp_connected, isSendByEnter FROM users WHERE id = :id");
+$stmt = $pdo->prepare("SELECT username, whatsapp_connected, isSendByEnter, preset_pending FROM users WHERE id = :id");
 $stmt->execute([':id' => $_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $isSendByEnter = $user["isSendByEnter"];
+$preset_pending = $user["preset_pending"];
 $whatsapp_connected = $user["whatsapp_connected"];
 ?>
 <?php include("includes/htmlstart.php"); ?>
@@ -145,36 +146,33 @@ $whatsapp_connected = $user["whatsapp_connected"];
 
                     <?php include(WEBBY_ROOT.'/controller/whatsapp_handler.php'); ?>
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="min-height: 16em;">
-                              <div class="card-header">
-                                Responses
-                              </div>
-                              <div class="card-body">
-                                <h5 class="card-title">Auto Reply & Chats</h5>
-                                <p class="card-text">Setup auto reply and greetings messages here.</p>
-                                <a href="/<?=$page?>-responses" class="btn btn-primary">Manage</a>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="min-height: 16em;">
-                              <div class="card-header">
-                                Privacy
-                              </div>
-                              <div class="card-body">
-                                <h5 class="card-title">Account Security</h5>
-                                <p class="card-text">Configure how you login to Ezy.Chat</p>
-                                <a href="/<?=$page?>-privacy" class="btn btn-primary">Manage</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php if(!empty($status)){ ?>
+                        <?php include(WEBBY_ROOT.'/controller/error_handler.php'); ?>
+                    <?php } ?>
 
-                </div>
-                
-            </div>
+					<form method="post" action="">
+						<input type="hidden" name="action" value="settings_responses">
+						<input type="hidden" name="token" value="<?=$Token?>">
+						<input type="hidden" name="page" value="<?=$page?>">
+
+						<h4 style="margin-bottom:0px;padding-bottom:0px;margin-top:50px;padding-bottom:0px;font-weight: bold;">Agent &amp; Customer Service Settings</h4>
+
+						<br><br>
+						
+						<label for="preset_pending">Preset Waiting Session Message:</label>
+						<textarea name="preset_pending" placeholder="Default: Hi <name>, please wait. Our agent will attending you in a while!" class="form-control"><?=$preset_pending?></textarea>
+						* Leave blank to send system default.<br>
+						* This message will send when contact start new conversation.
+						<br><br>
+						<center>
+                            <a href="/user-settings">
+                                <div class="btn btn-success">Back</div>
+                            </a>
+							<input type="submit" value="Update Settings" class="btn btn-success">
+						</center>
+					</form>
+
+				</div>
             <!-- end chat conversation section -->
 
         </div>

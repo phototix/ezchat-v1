@@ -146,14 +146,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <div class="row">
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
-                              <div class="card-header">
-                                Customer
-                              </div>
-                              <div class="card-body">
-                                <h5 class="card-title">Manage Your Customer</h5>
-                                <p class="card-text">Become Official Business with WhatsApp</p>
-                                <a href="#" class="btn btn-primary">Go</a>
-                              </div>
+                                <div class="card-header">
+                                    Customers
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Manage Your Customers</h5>
+                                    <p class="card-text">Access customer details and manage customer interactions efficiently.</p>
+                                    <a href="/crm-customer" class="btn btn-primary">Go</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -171,23 +171,24 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
                               <div class="card-header">
-                                Featured
+                                Account Setting
                               </div>
                               <div class="card-body">
-                                <h5 class="card-title">Join as Official Account</h5>
-                                <p class="card-text">Become Official Business with WhatsApp</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
+                                <h5 class="card-title">Configure</h5>
+                                <p class="card-text">Setup your account to enjoy all the features we specially built for you!</p>
+                                <a href="/user-settings" class="btn btn-primary">Settings</a>
                               </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
                               <div class="card-header">
-                                Promotion!
+                                Featured
                               </div>
                               <div class="card-body">
-                                <h5 class="card-title">Version 2 Launch Promo</h5>
-                                <p class="card-text">Stay tune for launch promo!</p>
+                                <h5 class="card-title">Join as Official Account</h5>
+                                <p class="card-text">Become Official Business with META's WhatsApp account with us.</p>
+                                <a href="#" class="btn btn-primary">Learn More</a>
                               </div>
                             </div>
                         </div>
