@@ -156,6 +156,9 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                         </div>
                     </div>
                     <br><br>
+                    <a href="/dashboard">
+                        <button>Back</button>
+                    </a>
                     <button class="delete_selected_button">Delete selected operator / link</button>
                     <div id="operator_properties" style="display: block;">
                         <label for="operator_title">Operator's title: </label><input id="operator_title" type="text">
