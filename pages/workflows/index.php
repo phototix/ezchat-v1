@@ -103,7 +103,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                     </div>
                     
                     <br><br>
-                    
+
                     </center>
                 </div>
                 
@@ -119,6 +119,9 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
 <!-- end  layout wrapper -->
 <?php include("includes/javascript.php"); ?>
 <!-- Flowchart CSS and JS -->
+<!-- jQuery & jQuery UI are required -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="/assets/workflows/jquery.flowchart.css">
 <script src="/assets/workflows/jquery.flowchart.js"></script>
 <script type="text/javascript">
