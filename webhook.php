@@ -144,10 +144,12 @@ if($phoneNumber!=="status"){
         // Return success response
         http_response_code(200);
         echo json_encode(["status" => "success"]);
+        exit();
     } catch (PDOException $e) {
         // Return error response
         http_response_code(200);
         echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+        exit();
     }
 }
 ?>
