@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 checkAdminAccess();
 
-$stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id");
+$stmt = $pdo->prepare("SELECT username, workflows FROM users WHERE id = :id");
 $stmt->execute([':id' => $_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -78,12 +78,12 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                             Operators (drag and drop them in the flowchart):
                         </div>
                         <div class="draggable_operators_divs">
-                            <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="0">1 input</div>
-                            <div class="draggable_operator" data-nb-inputs="0" data-nb-outputs="1">1 output</div>
-                            <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="1">1 input &amp; 1 output</div>
-                            <div class="draggable_operator" data-nb-inputs="1" data-nb-outputs="2">1 in &amp; 2 out</div>
-                            <div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="1">2 in &amp; 1 out</div>
-                            <div class="draggable_operator" data-nb-inputs="2" data-nb-outputs="2">2 in &amp; 2 out</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="1" data-nb-outputs="0">1 input</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="0" data-nb-outputs="1">1 output</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="1" data-nb-outputs="1">1 input &amp; 1 output</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="1" data-nb-outputs="2">1 in &amp; 2 out</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="2" data-nb-outputs="1">2 in &amp; 1 out</div>
+                            <div class="draggable_operator btn btn-success" data-nb-inputs="2" data-nb-outputs="2">2 in &amp; 2 out</div>
                         </div>
                     </div>
                     <button class="create_operator">Create operator</button>
@@ -94,7 +94,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                     <div id="link_properties" style="display: block;">
                         <label for="link_color">Link's color: </label><input id="link_color" type="color">
                     </div>
-                    <button class="get_data" id="get_data">Get data</button>
+                    <button class="get_data" id="get_data">Save Workflow</button>
                     <div>
                         <textarea id="flowchart_data"></textarea>
                     </div>
