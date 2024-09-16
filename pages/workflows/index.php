@@ -95,9 +95,6 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                         <label for="link_color">Link's color: </label><input id="link_color" type="color">
                     </div>
                     <button class="get_data" id="get_data">Get data</button>
-                    <button class="set_data" id="set_data">Set data</button>
-                    <button id="save_local">Save to local storage</button>
-                    <button id="load_local">Load from local storage</button>
                     <div>
                         <textarea id="flowchart_data"></textarea>
                     </div>
