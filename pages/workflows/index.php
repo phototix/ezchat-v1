@@ -10,6 +10,51 @@ $stmt->execute([':id' => $_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $userId = $user['username'];
+$workflows = $user['workflows'];
+if($workflows==""){
+    $workflows = '{
+  "operators": {
+    "operator1": {
+      "top": 20,
+      "left": 20,
+      "properties": {
+        "title": "Operator 1",
+        "inputs": {},
+        "outputs": {
+          "output_1": {
+            "label": "Output 1"
+          }
+        }
+      }
+    },
+    "operator2": {
+      "top": 80,
+      "left": 300,
+      "properties": {
+        "title": "Operator 2",
+        "inputs": {
+          "input_1": {
+            "label": "Input 1"
+          },
+          "input_2": {
+            "label": "Input 2"
+          }
+        },
+        "outputs": {}
+      }
+    }
+  },
+  "links": {
+    "link_1": {
+      "fromOperator": "operator1",
+      "fromConnector": "output_1",
+      "toOperator": "operator2",
+      "toConnector": "input_2"
+    }
+  },
+  "operatorTypes": {}
+}';
+}
 $apiKey = '8cd0de4e14cd240a97209625af4bdeb0'; // Replace with your actual API key
 $qrApiUrl = "https://server01.ezy.chat/api/screenshot?session=".$userId;
 $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
@@ -86,7 +131,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                             <div class="draggable_operator btn btn-success" data-nb-inputs="2" data-nb-outputs="2">2 in &amp; 2 out</div>
                         </div>
                     </div>
-                    <button class="create_operator">Create operator</button>
+                    <br><br>
                     <button class="delete_selected_button">Delete selected operator / link</button>
                     <div id="operator_properties" style="display: block;">
                         <label for="operator_title">Operator's title: </label><input id="operator_title" type="text">
@@ -94,9 +139,15 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                     <div id="link_properties" style="display: block;">
                         <label for="link_color">Link's color: </label><input id="link_color" type="color">
                     </div>
+                    <button class="set_data" id="set_data">Load Workflow</button>
                     <button class="get_data" id="get_data">Save Workflow</button>
                     <div>
-                        <textarea id="flowchart_data"></textarea>
+                        <form method="post" id="save_data_form">
+                            <input type="hidden" name="action" value="workflows_save">
+                            <input type="hidden" name="token" value="<?=$Token?>">
+                            <input type="hidden" name="page" value="<?=$page?>">
+                            <textarea id="flowchart_data" style="display:none;"><?=$workflows?></textarea>
+                        </form>
                     </div>
                     
                     <br><br>
@@ -317,6 +368,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
         function Flow2Text() {
             var data = $flowchart.flowchart('getData');
             $('#flowchart_data').val(JSON.stringify(data, null, 2));
+            document.getElementById('save_data_form').submit();
         }
         $('#get_data').click(Flow2Text);
 
