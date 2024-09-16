@@ -334,7 +334,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
         //--- create operator button
         //-----------------------------------------
 
-
+        Text2Flow();
 
 
         //-----------------------------------------
