@@ -156,6 +156,18 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         </div>
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
+                                <div class="card-header">
+                                    Bot Builder
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Manage Auto Reply Robot</h5>
+                                    <p class="card-text">Create your own business workflows to funnel your customers before you chat with them.</p>
+                                    <a href="/workflows" class="btn btn-primary">Go</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="min-height: 16em;">
                               <div class="card-header">
                                 WhatsApp Server
                               </div>
