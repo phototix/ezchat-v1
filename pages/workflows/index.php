@@ -97,6 +97,30 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
 
         <div class="chat-content d-lg-flex">
 
+            <!-- Start Content Body Top Header -->
+            <div class="p-3 p-lg-4 user-chat-topbar">
+                <div class="row align-items-center">
+                    <div class="col-sm-4 col-8">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0 d-block d-lg-none me-3">
+                                <a href="/dashboard" class="user-chat-remove font-size-18 p-1"><i class="bx bx-chevron-left align-middle"></i></a>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex align-items-center">                            
+                                    <div class="flex-shrink-0 chat-user-img online user-own-img align-self-center me-3 ms-0">
+                                        <img src="/assets/logo.jpg" class="rounded-circle avatar-sm" alt="">
+                                    </div>
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <h6 class="text-truncate mb-0 font-size-18"><a href="#" class="user-profile-show text-reset">Auto-Bot Workflows Builder</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Body Top Header -->
+
             <!-- start chat conversation section -->
             <div class="w-100 overflow-hidden position-relative">
 
@@ -146,7 +170,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                             <input type="hidden" name="action" value="workflows_save">
                             <input type="hidden" name="token" value="<?=$Token?>">
                             <input type="hidden" name="page" value="<?=$page?>">
-                            <textarea id="flowchart_data" style="display:none;"><?=$workflows?></textarea>
+                            <textarea id="flowchart_data" name="flowchart_data" style="display:none;"><?=$workflows?></textarea>
                         </form>
                     </div>
                     
