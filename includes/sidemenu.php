@@ -25,6 +25,8 @@
         <img src="/assets/logo.jpg" alt="" class="profile-user rounded-circle">
     </a>
     <div class="dropdown-menu">
+
+        <a class="dropdown-item d-flex align-items-center justify-content-between" href="/dashboard">Dashboard</a>
         
         <?php if($_SESSION['user_type']==""){?> 
             <a class="dropdown-item d-flex align-items-center justify-content-between" href="whatsapp_manage.html">Manage WhatsApp</a>
