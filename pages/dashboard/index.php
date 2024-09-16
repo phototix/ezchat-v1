@@ -186,7 +186,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                               <div class="card-body">
                                 <h5 class="card-title">Join as Official Account</h5>
                                 <p class="card-text">Become Official Business with META's WhatsApp account with us.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
+                                <a href="https://wa.me/601135945315?text=Hi" target="_blank" class="btn btn-primary">Learn More</a>
                               </div>
                             </div>
                         </div>
