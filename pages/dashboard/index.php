@@ -193,12 +193,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
                               <div class="card-header">
-                                Featured
+                                Meta Cloud API
                               </div>
                               <div class="card-body">
                                 <h5 class="card-title">Join as Official Account</h5>
                                 <p class="card-text">Become Official Business with META's WhatsApp account with us.</p>
-                                <a href="https://wa.me/601135945315?text=Hi" target="_blank" class="btn btn-primary">Learn More</a>
+                                <a href="https://www.facebook.com/v15.0/dialog/oauth?client_id=2066061130512912&redirect_uri=https://portal-v2.ezy.chat/meta_signup&scope=whatsapp_business_management,email,public_profile" target="_blank" class="btn btn-primary">Sign-up</a>
                               </div>
                             </div>
                         </div>
@@ -222,3 +222,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <!-- end  layout wrapper -->
 <?php include("includes/javascript.php"); ?>
 <?php include("includes/htmlend.php"); ?>
+
+<a href="https://www.facebook.com/v15.0/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&scope=whatsapp_business_management,email,public_profile">
+  <button>Sign Up for WhatsApp Business</button>
+</a>
