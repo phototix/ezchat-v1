@@ -1,4 +1,5 @@
 <?php
+echo $error_code;
 // Step 1: Capture the OAuth code
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
