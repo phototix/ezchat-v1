@@ -1,8 +1,6 @@
 <?php
-echo $error_code;
 // Step 1: Capture the OAuth code
-if (isset($_GET['code'])) {
-    $code = $_GET['code'];
+if ($code<>"") {
 
     // Step 2: Exchange code for access token
     $client_id = "2066061130512912";
@@ -20,9 +18,7 @@ if (isset($_GET['code'])) {
     echo $waba_info; // This contains information about the WABA account
 }
 
-if (isset($_GET['error_code'])) {
-    $error_code = $_GET['error_code'];
-    $error_message = $_GET['error_message'];
+if ($error_code<>""&&$error_message<>"") {
     echo "[$error_code] ".$error_message;
 }
 ?>
