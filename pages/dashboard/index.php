@@ -198,7 +198,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                               <div class="card-body">
                                 <h5 class="card-title">Join as Official Account</h5>
                                 <p class="card-text">Become Official Business with META's WhatsApp account with us.</p>
-                                <a href="https://www.facebook.com/v19.0/dialog/oauth?client_id=2066061130512912&redirect_uri=https://portal-v2.ezy.chat/meta_signup&scope=whatsapp_business_management,email,public_profile" target="_blank" class="btn btn-primary">Sign-up</a>
+                                <a href="https://www.facebook.com/v19.0/dialog/oauth?client_id=919968693146304&redirect_uri=https://portal-v2.ezy.chat/meta_signup&scope=whatsapp_business_management,email,public_profile" target="_blank" class="btn btn-primary">Sign-up</a>
                               </div>
                             </div>
                         </div>
