@@ -4,7 +4,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 if (!$data) {
     // If no data is received or the data is invalid
     http_response_code(400); // Bad Request
-    echo json_encode(["error" => "Invalid JSON data received"]);
+    echo json_encode(["status" => "error", "error" => "Invalid JSON data received"]);
     exit;
 }
 
