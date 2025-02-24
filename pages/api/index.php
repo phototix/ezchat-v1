@@ -8,16 +8,16 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 // Define the file to include based on the request method
 switch ($requestMethod) {
     case 'GET':
-        $pageURL = 'includes/get.php';
+        $pageURL = 'pages/api/includes/get.php';
         break;
     case 'POST':
-        $pageURL = 'includes/post.php';
+        $pageURL = 'pages/api/includes/post.php';
         break;
     case 'DELETE':
-        $pageURL = 'includes/delete.php';
+        $pageURL = 'pages/api/includes/delete.php';
         break;
     case 'PUT':
-        $pageURL = 'includes/put.php';
+        $pageURL = 'pages/api/includes/put.php';
         break;
     case 'OPTIONS':
         // Handle preflight request
