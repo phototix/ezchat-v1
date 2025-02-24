@@ -52,5 +52,5 @@ CREATE TABLE webhook_message_data (
 CREATE TABLE webhook_message_secrets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message_data_id VARCHAR(255),
-    secret TEXT,
+    secret TEXT
 );
