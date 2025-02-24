@@ -34,7 +34,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <ul class="nav nav-pills side-menu-nav" role="tablist">
 
                 <?php include("includes/sidemenu.php"); ?>
-                
+
             </ul>
         </div>
         <!-- end side-menu nav -->
@@ -106,7 +106,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <!-- end chat-leftsidebar -->
 
     <!-- Start User chat -->
-    <div class="user-chat w-100 overflow-hidden user-chat-show">
+    <div class="user-chat w-100 overflow-hidden">
 
         <div class="chat-content d-lg-flex">
 
