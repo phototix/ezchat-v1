@@ -19,12 +19,25 @@ function fetchQrCode($url, $apiKey) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'accept: image/png',
+        'accept: application/json',
         'X-Api-Key: ' . $apiKey
     ]);
-    $imageData = curl_exec($ch);
+    $response = curl_exec($ch);
     curl_close($ch);
-    return $imageData;
+
+    // Decode JSON response
+    $decodedResponse = json_decode($response, true);
+
+    // Check if decoding was successful and 'data' key exists
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception("Failed to decode JSON response: " . json_last_error_msg());
+    }
+
+    if (!isset($decodedResponse['data'])) {
+        throw new Exception("Invalid response structure: 'data' key not found.");
+    }
+
+    return $decodedResponse['data'];
 }
 
 // Check WhatsApp connection status
