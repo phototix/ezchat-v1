@@ -85,15 +85,21 @@ function checkWhatsappStatus($statusApiUrl, $apiKey) {
 
 // Function to fetch QR code image
 function fetchWhatsappScreenshot($url, $apiKey) {
+    
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'accept: image/png',
+        'accept: application/json',
         'X-Api-Key: ' . $apiKey
     ]);
-    $imageData = curl_exec($ch);
+    $response = curl_exec($ch);
     curl_close($ch);
-    return $imageData;
+
+    // Decode JSON response
+    $decodedResponse = json_decode($response, true);
+
+    return $decodedResponse['data'];
+
 }
 
 function checkAdminAccess(){
