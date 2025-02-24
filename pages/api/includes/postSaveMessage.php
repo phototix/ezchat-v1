@@ -8,7 +8,8 @@ if (!$data) {
     exit;
 }
 
-echo "test";
+http_response_code(200); // OK
+echo json_encode(["status" => "success", "message" => "Data successfully processed"]);
 
 // Insert into webhook_events table
 $stmt = $mysqli->prepare("INSERT INTO webhook_events (id, event, session, engine, environment_version, environment_engine, environment_tier, environment_browser) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -43,7 +44,4 @@ $stmt->execute();
 $stmt->close();
 
 $mysqli->close();
-
-http_response_code(200); // OK
-echo json_encode(["status" => "success", "message" => "Data successfully processed"]);
 ?>
