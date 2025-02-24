@@ -50,13 +50,13 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="tab-pane show active" id="pills-chat" role="tabpanel" aria-labelledby="pills-chat-tab">
                 <!-- Start chats content -->
                 <div>
+
                     <div class="px-4 pt-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
                                 <h4 class="mb-4">Dashboard</h4>
                             </div>
                         </div>
-
                     </div> <!-- .p-4 -->
 
                     <div class="chat-room-list" data-simplebar>
@@ -66,28 +66,33 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="chat-message-list">
     
                             <ul class="list-unstyled chat-list chat-user-list" id="dashboard-list">
+
                                 <li id="showChatButton" class="">
-                                    <a href="javascript: void(0);" class="unread-msg-user">、
+                                    <a href="/whatsapp_manage" class="unread-msg-user">、
                                         <div class="d-flex align-items-center">
                                             <div class="chat-user-img online align-self-center me-2 ms-0">
-                                                <img src="/assets/dashboard.png" class="rounded-circle avatar-xs" alt="">
-                                                <?php if ($showBadgeNumbersInMenu): ?>
-                                                    <span class="user-status"></span>
-                                                <?php endif; ?>
+                                                <img src="/assets/whatsapp-server.png" class="rounded-circle avatar-xs" alt="">
                                             </div>
                                             <div class="overflow-hidden">
-                                                <p class="text-truncate mb-0">Dashboard</p>
+                                                <p class="text-truncate mb-0">WhatsApp Server</p>
                                             </div>
-
-                                            <?php if ($showBadgeNumbersInMenu): ?>
-                                                <div class="ms-auto">
-                                                    <span class="badge bg-dark-subtle text-reset rounded p-1">18</span>
-                                                </div>
-                                            <?php endif; ?>
-
                                         </div>
                                     </a>
                                 </li>
+
+                                <li id="showChatButton" class="">
+                                    <a href="/user-settings" class="unread-msg-user">、
+                                        <div class="d-flex align-items-center">
+                                            <div class="chat-user-img online align-self-center me-2 ms-0">
+                                                <img src="/assets/user-settings.png" class="rounded-circle avatar-xs" alt="">
+                                            </div>
+                                            <div class="overflow-hidden">
+                                                <p class="text-truncate mb-0">Account Setting</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                
                             </ul>
 
                         </div>
