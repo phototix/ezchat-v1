@@ -24,7 +24,7 @@ function fetchQrCode($url, $apiKey) {
     ]);
     $imageData = curl_exec($ch);
     curl_close($ch);
-    return $imageData;
+    return $imageData["data"];
 }
 
 // Check WhatsApp connection status
