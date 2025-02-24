@@ -16,7 +16,7 @@ $responseData = [
     "message" => "Data retrieved successfully",
     "data" => [
         "id" => $_SESSION['user_id'],
-        "name" => "Example Username".$userId,
+        "name" => "Current Logged Username: ".$userId,
         "username" => $userId
     ]
 ];

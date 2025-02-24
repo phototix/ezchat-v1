@@ -1,39 +1,59 @@
+CREATE TABLE webhook_events (
+    id VARCHAR(255) PRIMARY KEY,
+    event VARCHAR(50),
+    session VARCHAR(255),
+    engine VARCHAR(50),
+    environment_version VARCHAR(50),
+    environment_engine VARCHAR(50),
+    environment_tier VARCHAR(50),
+    environment_browser VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
--- Table structure for `users`
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `token` varchar(32) NOT NULL,
-  `stat` varchar(10) NOT NULL,
-  `date` text NOT NULL,
-  `time` text NOT NULL,
-  `username` text NOT NULL,
-  `email` text NOT NULL,
-  `salt` text NOT NULL,
-  `password` text NOT NULL,
-  `otp` text NOT NULL,
-  `otp_expiration` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `phone` text NOT NULL,
-  `country` varchar(10) NOT NULL,
-  `full_phone` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `token` (`token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE webhook_users (
+    id VARCHAR(255) PRIMARY KEY,
+    pushName VARCHAR(255)
+);
 
-INSERT INTO `users` (`id`, `token`, `stat`, `date`, `time`, `username`, `email`, `salt`, `password`, `otp`, `otp_expiration`, `phone`, `country`, `full_phone`) VALUES ('1', 'e50ae4996073d46622f496dd3a32d08b', '0', '2024-08-28', '13:30:54', 'ezychat_superadmin', 'computerwisdom1224@gmail.com', 'd2ed1f36e1e2a02a94b04a38c9ee7f00', '1beb16ca627eb370ec5a4fdce551c755', '', '0000-00-00 00:00:00', '85555421', '65', '6585555421');
+CREATE TABLE webhook_payloads (
+    id VARCHAR(255) PRIMARY KEY,
+    event_id VARCHAR(255),
+    timestamp INT,
+    from_user VARCHAR(255),
+    to_user VARCHAR(255),
+    body TEXT,
+    hasMedia BOOLEAN,
+    ack INT,
+    ackName VARCHAR(50),
+    FOREIGN KEY (event_id) REFERENCES webhook_events(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+CREATE TABLE webhook_message_data (
+    id VARCHAR(255) PRIMARY KEY,
+    payload_id VARCHAR(255),
+    viewed BOOLEAN,
+    message_body TEXT,
+    message_type VARCHAR(50),
+    timestamp INT,
+    notifyName VARCHAR(255),
+    from_user VARCHAR(255),
+    to_user VARCHAR(255),
+    ack INT,
+    invis BOOLEAN,
+    isNewMsg BOOLEAN,
+    star BOOLEAN,
+    kicNotified BOOLEAN,
+    recvFresh BOOLEAN,
+    isFromTemplate BOOLEAN,
+    labels TEXT,
+    FOREIGN KEY (payload_id) REFERENCES webhook_payloads(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
--- Table structure for `webbycms_example`
-DROP TABLE IF EXISTS `webbycms_example`;
-CREATE TABLE `webbycms_example` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `token` varchar(32) NOT NULL,
-  `stat` varchar(10) NOT NULL,
-  `date` text NOT NULL,
-  `time` text NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `token` (`token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `webbycms_example` (`id`, `token`, `stat`, `date`, `time`) VALUES ('1', '6764ade585b3df6597eef343e4c2d32a', '0', '2024-08-28', '11:35 AM');
-
+CREATE TABLE webhook_message_secrets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message_data_id VARCHAR(255),
+    secret BYTEA,
+    FOREIGN KEY (message_data_id) REFERENCES webhook_message_data(id)
+);
