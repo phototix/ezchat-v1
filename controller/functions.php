@@ -28,7 +28,7 @@ function startWhatsappInstance($userId) {
             ],
             "webhooks" => [
                 [
-                    "url" => "https://portal.ezy.chat/webhook.php",
+                    "url" => "https://portal-v2.ezy.chat/webhook.php",
                     "events" => ["message"],
                     "hmac" => null,
                     "retries" => null,
