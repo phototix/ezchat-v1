@@ -9,17 +9,17 @@ if (!$data) {
     exit;
 }
 
-// // Insert into webhook_events table
-// $stmt = $pdo->prepare("INSERT INTO webhook_events (id, event, session, engine, environment_version, environment_engine, environment_tier, environment_browser) VALUES (:id, :event, :session, :engine, :environment_version, :environment_engine, :environment_tier, :environment_browser)");
-// $stmt->bindParam(':id', $data['id']);
-// $stmt->bindParam(':event', $data['event']);
-// $stmt->bindParam(':session', $data['session']);
-// $stmt->bindParam(':engine', $data['engine']);
-// $stmt->bindParam(':environment_version', $data['environment']['version']);
-// $stmt->bindParam(':environment_engine', $data['environment']['engine']);
-// $stmt->bindParam(':environment_tier', $data['environment']['tier']);
-// $stmt->bindParam(':environment_browser', $data['environment']['browser']);
-// $stmt->execute();
+// Insert into webhook_events table
+$stmt = $pdo->prepare("INSERT INTO webhook_events (id, event, session, engine, environment_version, environment_engine, environment_tier, environment_browser) VALUES (:id, :event, :session, :engine, :environment_version, :environment_engine, :environment_tier, :environment_browser)");
+$stmt->bindParam(':id', $data['id']);
+$stmt->bindParam(':event', $data['event']);
+$stmt->bindParam(':session', $data['session']);
+$stmt->bindParam(':engine', $data['engine']);
+$stmt->bindParam(':environment_version', $data['environment']['version']);
+$stmt->bindParam(':environment_engine', $data['environment']['engine']);
+$stmt->bindParam(':environment_tier', $data['environment']['tier']);
+$stmt->bindParam(':environment_browser', $data['environment']['browser']);
+$stmt->execute();
 
 http_response_code(200); // OK
 echo json_encode(["status" => "success", "message" => "Data successfully processed".$data['id']]);
