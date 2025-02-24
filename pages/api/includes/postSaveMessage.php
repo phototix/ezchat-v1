@@ -21,6 +21,9 @@ $stmt->bindParam(':environment_tier', $data['environment']['tier']);
 $stmt->bindParam(':environment_browser', $data['environment']['browser']);
 $stmt->execute();
 
+http_response_code(200); // OK
+echo json_encode(["status" => "success", "message" => "Data successfully processed. ID:".$data['id']]);
+
 // Insert into webhook_users table
 $stmt = $pdo->prepare("INSERT INTO webhook_users (id, pushName) VALUES (:id, :pushName)");
 $stmt->bindParam(':id', $data['me']['id']);
@@ -71,7 +74,4 @@ $stmt->execute();
 
 // Close the PDO connection (optional, as it will be closed when the script ends)
 $pdo = null;
-
-http_response_code(200); // OK
-echo json_encode(["status" => "success", "message" => "Data successfully processed. ID:".$data['id']]);
 ?>
