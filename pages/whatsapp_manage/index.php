@@ -90,7 +90,7 @@ $statusApiUrl = "https://server01.ezy.chat/api/sessions/$userId";
                             <?php
                             $screenShot = fetchWhatsappScreenshot($ApiUrl, $apiKey);
                             ?>
-                            <img src="data:image/png;base64,<?=$qrCode?>" alt="QR Code" class="img-fit">
+                            <img src="data:image/png;base64,<?=$screenShot?>" alt="QR Code" class="img-fit">
                             <br><br>
                             <a href="/whatsapp_logout">
                                 <div class="btn btn-danger">Logout WhatsApp Server</div>

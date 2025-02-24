@@ -98,8 +98,17 @@ function fetchWhatsappScreenshot($url, $apiKey) {
     // Decode JSON response
     $decodedResponse = json_decode($response, true);
 
-    return $decodedResponse['data'];
+    // Check if decoding was successful and 'data' key exists
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception("Failed to decode JSON response: " . json_last_error_msg());
+    }
 
+    if (!isset($decodedResponse['data'])) {
+        throw new Exception("Invalid response structure: 'data' key not found.");
+    }
+
+    return $decodedResponse['data'];
+    
 }
 
 function checkAdminAccess(){
