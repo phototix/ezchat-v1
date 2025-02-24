@@ -1,6 +1,6 @@
 <?php
-echo "test";
 if ($cate <> "") {
+	echo "test";
     $pageURL = 'pages/api/includes/'.$cate.'.php';
     // Check if the file exists before including it
     if (file_exists($pageURL)) {
