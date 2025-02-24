@@ -8,6 +8,8 @@ if (!$data) {
     exit;
 }
 
+echo "test";
+
 // Insert into webhook_events table
 $stmt = $mysqli->prepare("INSERT INTO webhook_events (id, event, session, engine, environment_version, environment_engine, environment_tier, environment_browser) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssssss", $data['id'], $data['event'], $data['session'], $data['engine'], $data['environment']['version'], $data['environment']['engine'], $data['environment']['tier'], $data['environment']['browser']);
