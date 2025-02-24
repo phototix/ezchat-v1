@@ -144,30 +144,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <div class="row">
                         <div class="col">
                             <div class="card" style="min-height: 16em;">
-                                <div class="card-header">
-                                    Customers
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Your Customers</h5>
-                                    <p class="card-text">Access customer details and manage customer interactions efficiently.</p>
-                                    <a href="/crm-customer" class="btn btn-primary">Go</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="min-height: 16em;">
-                                <div class="card-header">
-                                    Bot Builder
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Auto Reply Robot</h5>
-                                    <p class="card-text">Create your own business workflows to funnel your customers before you chat with them.</p>
-                                    <a href="/workflows" class="btn btn-primary">Go</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="min-height: 16em;">
                               <div class="card-header">
                                 WhatsApp Server
                               </div>
@@ -187,18 +163,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <h5 class="card-title">Configure</h5>
                                 <p class="card-text">Setup your account to enjoy all the features we specially built for you!</p>
                                 <a href="/user-settings" class="btn btn-primary">Settings</a>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="min-height: 16em;">
-                              <div class="card-header">
-                                Meta Cloud API
-                              </div>
-                              <div class="card-body">
-                                <h5 class="card-title">Join as Official Account</h5>
-                                <p class="card-text">Become Official Business with META's WhatsApp account with us.</p>
-                                <a href="https://www.facebook.com/v19.0/dialog/oauth?client_id=919968693146304&redirect_uri=https://portal-v2.ezy.chat/meta_signup&scope=whatsapp_business_management,email,public_profile" target="_blank" class="btn btn-primary">Sign-up</a>
                               </div>
                             </div>
                         </div>
