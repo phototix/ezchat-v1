@@ -99,7 +99,7 @@ if ($status === 'WORKING') {
                             Scan this QR Code to Connect WhatsApp
                           </div>
                           <div class="card-body">
-                            <img src="data:image/png;<?= base64_encode($qrCode) ?>" alt="QR Code" class="img-fit">
+                            <img src="data:image/png;base64,<?=$qrCode?>" alt="QR Code" class="img-fit">
                             <script>
                                 setTimeout(function() {
                                     window.location.href = "";
