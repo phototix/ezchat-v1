@@ -41,4 +41,7 @@ $stmt->execute();
 $stmt->close();
 
 $mysqli->close();
+
+http_response_code(200); // OK
+echo json_encode(["status" => "success", "message" => "Data successfully processed"]);
 ?>
