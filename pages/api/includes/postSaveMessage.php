@@ -9,9 +9,6 @@ if (!$data) {
     exit;
 }
 
-http_response_code(200); // OK
-echo json_encode(["status" => "success", "message" => "Data successfully processed"]);
-
 // Insert into webhook_events table
 $stmt = $pdo->prepare("INSERT INTO webhook_events (id, event, session, engine, environment_version, environment_engine, environment_tier, environment_browser) VALUES (:id, :event, :session, :engine, :environment_version, :environment_engine, :environment_tier, :environment_browser)");
 $stmt->bindParam(':id', $data['id']);
@@ -23,6 +20,9 @@ $stmt->bindParam(':environment_engine', $data['environment']['engine']);
 $stmt->bindParam(':environment_tier', $data['environment']['tier']);
 $stmt->bindParam(':environment_browser', $data['environment']['browser']);
 $stmt->execute();
+
+http_response_code(200); // OK
+echo json_encode(["status" => "success", "message" => "Data successfully processed"]);
 
 // Insert into webhook_users table
 $stmt = $pdo->prepare("INSERT INTO webhook_users (id, pushName) VALUES (:id, :pushName)");
