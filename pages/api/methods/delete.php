@@ -6,7 +6,9 @@ if ($cate <> "") {
         include($pageURL);
     } else {
         $pageURL = 'includes/main.php';
+        include($pageURL);
     }
 } else {
     $pageURL = 'includes/main.php';
+    include($pageURL);
 }
